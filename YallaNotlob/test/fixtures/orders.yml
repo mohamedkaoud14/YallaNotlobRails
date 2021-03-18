@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  restaurant_name: MyString
+  User: one
+
+two:
+  type: 
+  restaurant_name: MyString
+  User: two
