@@ -7,10 +7,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    
   </head>
 
   <body>
+  <div style="height:50px"></div>
+  <%="welocme ,#{current_user.username}!" if user_signed_in?%> 
+  <%=link_to 'Logout', destroy_user_session_path,method: :delete if user_signed_in?%>
     <%= yield %>
+    
   </body>
 </html>
