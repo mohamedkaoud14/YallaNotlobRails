@@ -1,0 +1,28 @@
+<%= form_with model: @Order do |form| %>
+    <div>
+      <%= form.label 'order type' %><br>
+      <%= form.select :type, ['break fast', 'lunch', 'dinner']%>
+    </div>
+
+    <div>
+    <p>write the restaurant name </p>
+      <%= form.label :'form' %><br>
+      <%= form.text_field :restaurant_name %>
+    </div>
+      
+    <div>
+    <p>write the Friend name </p>
+      <%= form.label :'Freinds' %><br>
+      <%= form.text_field :restaurant_name %>
+    </div>
+      
+    <div>
+      <%= form.label :'menu image' %><br>
+      <%= form.text_field :restaurant_name %>
+    </div>
+
+
+    <div>
+      <%= form.submit %>
+    </div>
+<% end %>
