@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^6.0.0-beta.6"
+  }
+}
