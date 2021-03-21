@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_03_18_165432) do
 
-  create_table "Users", charset: "latin1", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
   create_table "groups", charset: "latin1", force: :cascade do |t|
     t.string "group_name"
     t.bigint "User_id", null: false
@@ -41,6 +29,18 @@ ActiveRecord::Schema.define(version: 2021_03_18_165432) do
     t.index ["User_id"], name: "index_orders_on_User_id"
   end
 
-  add_foreign_key "groups", "Users"
-  add_foreign_key "orders", "Users"
+  create_table "users", charset: "latin1", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "groups", "users", column: "User_id"
+  add_foreign_key "orders", "users", column: "User_id"
 end
