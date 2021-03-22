@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :users, controllers: {omniauth_callabacks: 'omniauth'}
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth' } 
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
+  
   # get 'auth/facebook/callback'
 
   # devise_for :users, skip: :all
@@ -12,5 +13,10 @@ Rails.application.routes.draw do
  
   # devise_scope :user do
   #   get 'sign_in', to: 'devise/sessions#new'
+
+  
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 # end
+
+

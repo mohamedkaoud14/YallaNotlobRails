@@ -1,0 +1,76 @@
+<html>
+<head>
+<style>
+.asd{
+ border : solid 3px ; 
+}
+.img{
+
+width : 40px ; 
+height : 40px ; 
+
+
+
+}
+</style>
+
+</head>
+<body>
+<h1>wellcome,<%= @user.username %></h1>
+
+<h3>friends</h3>
+
+<%= form_tag("/friends/search", method:"get") do  %>
+    <div>
+      
+      <%= text_field_tag(:q) %>
+
+    </div>
+    <div>
+      <%= submit_tag("add new friend") %>
+    </div>
+  <% end %>
+
+
+<h4>friends list</h4>
+
+<div class= "asd">
+<ul>
+  <% @fris.each do |fri| %>
+    <% @alls.each do |all| %>
+        <%   if fri.friend_id == all.id  %>
+                    <div>
+                    
+                  <li>
+                 <%= all.username %> |
+                 <%= all.email %> | 
+                 <img class="img"  src="/img/1.jpeg" alt="rss" />
+
+                 <%= link_to "unfriend", friend_path(fri) ,
+
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to unfriend him?" } %>
+
+                 </li>
+                 </div>
+
+         <% end %>
+    
+  <% end %>
+  <% end %>
+</ul>
+
+
+
+
+
+</div>
+
+
+
+
+
+</body>
+<html>
+
+
