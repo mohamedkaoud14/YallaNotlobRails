@@ -10,23 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_023143) do
+ActiveRecord::Schema.define(version: 2021_03_22_224247) do
 
-  create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "groupusers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "group_name"
-    t.bigint "User_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["User_id"], name: "index_groups_on_User_id"
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "type"
+    t.string "order_type"
     t.string "restaurant_name"
-    t.bigint "User_id", null: false
+    t.string "img"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["User_id"], name: "index_orders_on_User_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -47,12 +46,11 @@ ActiveRecord::Schema.define(version: 2021_03_20_023143) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.string "provider", limit: 50, default: "", null: false
+    t.string "provider", limit: 50, default: ""
     t.string "uid", limit: 500, default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "groups", "users", column: "User_id"
-  add_foreign_key "orders", "users", column: "User_id"
+  add_foreign_key "orders", "users"
 end

@@ -1,0 +1,10 @@
+<%= form_tag("/groupusers/create", method:"get") do  %>
+    <div>
+      
+      <%= text_field_tag(:group_name) %>
+
+    </div>
+    <div>
+      <%= submit_tag("add new friend") %>
+    </div>
+  <% end %>
