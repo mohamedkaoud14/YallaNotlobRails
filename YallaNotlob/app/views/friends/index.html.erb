@@ -16,7 +16,7 @@ height : 40px ;
 
 </head>
 <body>
-<h1>wellcome,<%= @user.username %></h1>
+<%="welocme ,#{current_user.username}!"%>
 
 <h3>friends</h3>
 
@@ -44,12 +44,13 @@ height : 40px ;
                   <li>
                  <%= all.username %> |
                  <%= all.email %> | 
-                 <img class="img"  src="/img/1.jpeg" alt="rss" />
+                 <img class="img"  src=<%= all.image %> alt="rss" /> |
+                 
+                  <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete %>
+                  <%= yield %>
 
-                 <%= link_to "unfriend", friend_path(fri) ,
 
-                  method: :delete,
-                  data: { confirm: "Are you sure you want to unfriend him?" } %>
+                
 
                  </li>
                  </div>
@@ -58,6 +59,7 @@ height : 40px ;
     
   <% end %>
   <% end %>
+ 
 </ul>
 
 

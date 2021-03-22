@@ -1,22 +1,30 @@
 Rails.application.routes.draw do
-  # devise_for :users, controllers: {omniauth_callabacks: 'omniauth'}
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
-  
-  # get 'auth/facebook/callback'
-
-  # devise_for :users, skip: :all
-  # # devise_for :users, controllers: { sessions: 'users/sessions' }
-  # devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'cmon_let_me_in', 
-  # password: 'secret', confirmation: 'verification', unlock: 'unblock', 
-  # registration: 'register', sign_up: 'cmon_let_me_in' }
-  # root "groups#index"
+  get "/friends/search", to: "friends#search"
+  resources :friends
+  root "friends#index"
+   
+  # resources :friends
  
-  # devise_scope :user do
-  #   get 'sign_in', to: 'devise/sessions#new'
-
+  # get "/friends/:id", to: "friends#index"
+   delete "/friends/:id", to: "friends#destroy"
+   
   
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  
+  devise_scope :user do
+    get "/users/sign_out", to:"devise/sessions#destroy" 
+    
+ 
+  end
+
 end
-# end
 
+# <%= link_to "unfriend", "/friends/#{fri.friend_id}" ,
 
+# method: :delete,
+# data: { confirm: "Are you sure you want to unfriend him?" } %>
+
+# <%= link_to "unfriend", "/friends/" ,
+#                   method: :delete,
+#                   data: { confirm: "Are you sure you want to unfriend him?" } %>

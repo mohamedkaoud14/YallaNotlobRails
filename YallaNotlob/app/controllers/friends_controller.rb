@@ -1,12 +1,16 @@
 class FriendsController < ApplicationController
   def index 
-    # @userid = params[:id]
-  @arrs = [] 
-      @alls = User.all
-    # @user = User.find(params[:id])
-    @user = User.find(8)
+  #   # @userid = params[:id]
+   @arrs = [] 
+       @alls = User.all
+  #    @user = User.find(params[:id])
+  #   # @user = User.find(8)
 
-    @fris =  Friendship.where(user_id: @user.id)
+  #   @fris =  Friendship.where(user_id: @user.id)
+        @user = User.find(current_user.id)
+           @fris =  Friendship.where(user_id: @user.id)
+
+  #current_user.username
   end
 
   # def new
@@ -30,22 +34,36 @@ class FriendsController < ApplicationController
      @alls.each do |all|
         
         if  @item == all.email 
-          Friendship.new(user_id:8 , friend_id:all.id).save 
-          @asd = @userid
-          redirect_to  "/friends/8"
+          Friendship.new(user_id:current_user.id , friend_id:all.id).save 
+          Friendship.new(user_id:all.id , friend_id:current_user.id).save 
+
+          # @asd = @userid
+          redirect_to  "/"
         end
       end 
   end
+      # this is destroy  !!!!!
+    def show
+      # @ID = params[:id]
+        # @deleteitemInUser = Friendship.find(params[:id])
+        # @deleteitemInUser.destroy
 
-    def destroy
-      @ID = params[:id]
-      #  @deleteitemInUser = Friendship.find(4)
-       @deleteitemInUser = Friendship.where(friend_id:params[:id] )
+        # @deleteitemInUser1 = Friendship.find(params[:id].to_i+1) 
+        @deleteitemInUser =  Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
+        @deleteitemInUser1 =  Friendship.find_by(user_id:params[:id] , friend_id: current_user.id)
 
-      @deleteitemInUser.destroy
+         @deleteitemInUser.destroy
+         @deleteitemInUser1.destroy
+
+
+        # @deleteitemInUser = Friendship.where(friend_id:params[:id]  )
+
+      # @deleteitemInUser1.destroy
+
   
-      redirect_to "/friends/6"
+       redirect_to root_path
     end
+    
 
   # private
   #   def article_params
