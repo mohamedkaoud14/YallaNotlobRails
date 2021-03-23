@@ -4,6 +4,21 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    
+    <% if resource.avatar.attached?  %>
+
+    <%= image_tag(resource.avatar) %>
+
+    <% else  %>
+    <%= image_tag("/default.jpeg") %>
+    
+    <% end %>
+  </div>
+
+  
+  
+  
+  <div class="field">
   <%= f.label :username%><br />
   <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
 </div>
@@ -24,6 +39,12 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  
+  <div class="field">
+    <%= f.label "add your image" %><br />
+    <%= f.file_field :avatar %>
+      </div>
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
