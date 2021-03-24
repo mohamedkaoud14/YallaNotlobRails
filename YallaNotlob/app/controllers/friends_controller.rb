@@ -43,7 +43,7 @@ class FriendsController < ApplicationController
       end 
   end
       # this is destroy  !!!!!
-    def show
+    def destroy
       # @ID = params[:id]
         # @deleteitemInUser = Friendship.find(params[:id])
         # @deleteitemInUser.destroy

@@ -3,21 +3,22 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
   get "/friends/search", to: "friends#search"
   resources :friends
-  # root "friends#index"
-   
-  # resources :friends
- 
-  # get "/friends/:id", to: "friends#index"
    delete "/friends/:id", to: "friends#destroy"
-   
-  
-  
-  
   devise_scope :user do
-    get "/users/sign_out", to:"devise/sessions#destroy" 
-    
- 
+    get "/users/sign_out", to:"devise/sessions#destroy"  
   end
+    resource :groupusers
+    resource :omniauth
+   resource :orders
+   delete "/groupusers/delete/:id" , to: "groupusers#destroy"
+  #  root "groupusers#index"
+   post "/groupusers/new" , to: "groupusers#new"
+   get "/groupusers/new" , to: "groupusers#new"
+     post "/groupusers/create" , to: "groupusers#create"
+   get "/groupusers/create" , to: "groupusers#create"  
+      post '/users/auth/google_oauth2', to: "groupusers#new"
+       get '/users/auth/google_oauth2', to: "groupusers#new"
+ 
 
 end
 
