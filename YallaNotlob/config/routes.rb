@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # delete "/groupusers/:id" , to: "groupusers#destroy"
   resource :groupusers
    resource :omniauth
+  resource :orders
   delete "/groupusers/delete/:id" , to: "groupusers#destroy"
   root "groupusers#index"
   post "/groupusers/new" , to: "groupusers#new"

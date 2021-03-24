@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_171800) do
+ActiveRecord::Schema.define(version: 2021_03_24_024350) do
+
+  create_table "friends", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "friend_id"
+    t.bigint "users_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_friends_on_users_id"
+  end
 
   create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -31,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_171800) do
     t.string "order_type"
     t.string "restaurant_name"
     t.string "img"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -61,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_171800) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friends", "users", column: "users_id"
   add_foreign_key "group_users", "groupusers", column: "groupusers_id"
   add_foreign_key "group_users", "users"
   add_foreign_key "orders", "users"
