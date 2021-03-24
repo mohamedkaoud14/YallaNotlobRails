@@ -19,11 +19,6 @@ Rails.application.routes.draw do
   get "/groupusers/create" , to: "groupusers#create"
 
   #  get "/groupusers/:id" , to: "groupusers#destroy"
-
-
- 
-  
-
   
      post '/users/auth/google_oauth2', to: "groupusers#new"
       get '/users/auth/google_oauth2', to: "groupusers#new"
