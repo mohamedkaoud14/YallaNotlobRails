@@ -1,12 +1,32 @@
 Rails.application.routes.draw do
+  # devise_for :users
   # devise_for :users, controllers: {omniauth_callabacks: 'omniauth'}
+  # root 'groupusers/#index'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' } 
   # get 'auth/facebook/callback'
+  # delete "/groupusers/:id" , to: "groupusers#destroy"
+  resource :groupusers
+   resource :omniauth
+  delete "/groupusers/delete/:id" , to: "groupusers#destroy"
   root "groupusers#index"
   post "/groupusers/new" , to: "groupusers#new"
   get "/groupusers/new" , to: "groupusers#new"
+  #  post "/groupusers/edit" , to: "groupusers#edit"
+  # get "/groupusers/edit" , to: "groupusers#edit"
+    # post "/groupusers/show" , to: "groupusers#show"
+    # get "/groupusers/show" , to: "groupusers#show"
     post "/groupusers/create" , to: "groupusers#create"
   get "/groupusers/create" , to: "groupusers#create"
+
+  #  get "/groupusers/:id" , to: "groupusers#destroy"
+
+
+ 
+  
+
+  
+     post '/users/auth/google_oauth2', to: "groupusers#new"
+      get '/users/auth/google_oauth2', to: "groupusers#new"
   # resources :groupusers
 
   # devise_for :users, skip: :all
@@ -20,7 +40,7 @@ Rails.application.routes.draw do
   #   get 'sign_in', to: 'devise/sessions#new'
   devise_scope :user do
     get "/users/sign_out", to:"devise/sessions#destroy" 
-    #  post '/users/auth/google_oauth2', to:'devise/oomniauth#google_oauth2'
+
     #   get '/users/auth/google_oauth2', to:'devise/omniauth_callbacks#google_oauth2'
 
  

@@ -5,6 +5,32 @@
 
     </div>
     <div>
-      <%= submit_tag("add new friend") %>
+     <%= submit_tag "add new grou", :class => "btn btn-primary", :id => "add" %>
+    
     </div>
   <% end %>
+ 
+ 
+  <ul style="border:1px solid ;width:35%" id="list">
+  
+  <% @groupusers.each  do |groupuser| %>
+    <li>
+        <%= groupuser.group_name %>
+
+         <%= link_to "Adduser", edit_groupusers_url(:account_id => groupuser.id),method: :get%>
+  <%=link_to 'DElETuser',  groupusers_path(:account_id => groupuser.id), method: :delete, data: { confirm: "Are you sure?" } %>
+    
+    <%= yield %> 
+
+ 
+      
+      
+    </li>
+  <% end %>
+</ul>
+  <% render inline: '/groupusers/edit'%>
+  
+
+
+
+ 
