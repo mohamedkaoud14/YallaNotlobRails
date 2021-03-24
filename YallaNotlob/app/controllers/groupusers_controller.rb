@@ -27,7 +27,7 @@ class GroupusersController < ApplicationController
         redirect_to root_path
         end
 
-         def edit
+        def edit
            @arr =[]
       
         @groupuserf = Groupuser.find_by(id:params[:account_id])

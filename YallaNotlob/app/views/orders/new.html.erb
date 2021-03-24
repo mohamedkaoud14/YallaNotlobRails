@@ -1,0 +1,67 @@
+<%= form_tag("/orders/create", method:"get") do  %>
+    <div>
+    <%= label_tag 'oreder_type'  %>
+    <div>
+      <%= select_tag(:order_type, options_for_select([['lunch', 1],['breakfast',2],['dinner',3]])) %>
+     
+     </div>
+     <div>
+      <%= label_tag 'From'  %>
+      </div>
+      <%= text_field_tag(:restaurant_name) %>
+
+
+      <div>
+      <%= label_tag 'friends'  %>
+
+      </div>
+        
+      <div>
+      
+      <%= text_field_tag(:group_name) %>
+
+    </div>
+    <div>
+     <%= submit_tag "add new group", :class => "btn btn-primary", :id => "add" %>
+    
+    </div>
+      <ul style="border:1px solid ;width:35%" id="list">
+  
+      <% @orders.each  do |order| %>
+        <li>
+            <%= order.order_type %>
+    
+      
+        <%= yield %> 
+    
+     
+          
+          
+        </li>
+
+        
+      <% end %>
+    </ul>
+ 
+    <div style="border:1px solid ;width:35%" id="list">
+    <ul >        
+<% @arr.each  do |userfind| %>
+    <li>
+       
+         <%= userfind[0] %>
+
+    </li>
+     <% end %>
+      
+</ul>
+    </div>
+    
+    </div>
+  <% end %>
+ 
+
+  
+
+
+
+ 
