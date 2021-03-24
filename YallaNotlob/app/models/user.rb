@@ -16,6 +16,8 @@ after_create_commit :add_default_avatar
       end
   end 
 
+  
+
   private
   def add_default_avatar
     unless avatar.attached?
@@ -41,3 +43,6 @@ after_create_commit :add_default_avatar
   end
 
 end
+
+
+                            # <%= image_tag(all.avatar_thumbnail) %>

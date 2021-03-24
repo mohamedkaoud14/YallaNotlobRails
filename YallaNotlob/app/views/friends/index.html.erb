@@ -3,11 +3,19 @@
             <style>
                 .asd{
                     border : solid 3px ; 
+                    text-align: left;
+
+
                 }
-                .img{
-                    width : 40px ; 
-                    height : 40px ; 
-            }
+
+            body {
+            font-family: system-ui;
+            background: #f06d06;
+
+            color: white;
+            text-align: center;
+        }
+      
             </style>
 
       </head>
@@ -36,20 +44,18 @@
               <% @fris.each do |fri| %>
                 <% @alls.each do |all| %>
                     <%   if fri.friend_id == all.id  %>
-                                <div>
+                                <div class="left">
                                 
                               <li>
                             <%= all.username %> |
                             <%= all.email %> | 
                            
-                            <%= image_tag(all.avatar_thumbnail)  %>
-                            
+
+                            <%= image_tag all.avatar.variant(resize: "70x70")  if all.avatar.attached? %> 
+                             
                               <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete %>
                               <%= yield %>
-
-
-                            
-
+                             
                             </li>
                             </div>
 
@@ -59,28 +65,6 @@
               <% end %>
             </ul>
             </div>
-
- <% if current_user  %>
-
-<p>
-<%= link_to "edit account" ,edit_user_registration_path  %>
-</p>
-<br>
-
-<%= image_tag(current_user.avatar_thumbnail)  %>
-
-
-<% else  %>
-
-<p>
-<%= link_to "sign up" ,new_user_registration_path %>
-</p>
-<p>
-<%= link_to "sign in" ,new_user_session_path  %>
-</p>
-<% end %>
-
-
         </body>
  <html>
 

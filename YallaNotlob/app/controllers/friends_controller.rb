@@ -38,7 +38,7 @@ class FriendsController < ApplicationController
           Friendship.new(user_id:all.id , friend_id:current_user.id).save 
 
           # @asd = @userid
-          redirect_to  "/"
+          redirect_to  "/friends"
         end
       end 
   end
@@ -61,7 +61,7 @@ class FriendsController < ApplicationController
       # @deleteitemInUser1.destroy
 
   
-       redirect_to root_path
+       redirect_to "/friends"
     end
     
 

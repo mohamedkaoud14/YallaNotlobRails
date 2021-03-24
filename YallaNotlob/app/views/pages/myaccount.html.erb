@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+            font-family: system-ui;
+            background: #f06d06;
+
+            color: white;
+            text-align: center;
+        }
+
+    .my-header{
+        color: rgb(39, 75, 107);
+
+
+    }
+
+    .button {
+			display: inline-block;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px; /* border radius */
+			-moz-background-clip: padding;
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box; /* prevents bg color from leaking outside the border */
+			 background-color: #8cc63e; /* layer fill content */
+
+
+			-moz-box-shadow: inset 0 -5px 0 #67922e; /* inner shadow */
+			-webkit-box-shadow: inset 0 -5px 0 #67922e; /* inner shadow */
+			box-shadow: inset 0 -5px 0 #67922e; /* inner shadow */
+			-webkit-transition: all .12s ease-in;
+			-moz-transition: all .12s ease-in;
+			-ms-transition: all .12s ease-in;
+			-o-transition: all .12s ease-in;
+			transition: all .12s ease-in;
+		}
+
+    	.button:hover {
+			background-color: #93ce44;
+		}
+
+		.button a {
+			display: inline-block;
+			padding: 4px 10px 12px 10px;
+			color: #fff; /* text color */
+			font-family: "Open Sans", sans-serif;
+			font-size: 48px;
+			font-weight: bold;
+			text-decoration: none;
+			text-transform: uppercase;
+			-webkit-transition: all .12s ease-in;
+			-moz-transition: all .12s ease-in;
+			-ms-transition: all .12s ease-in;
+			-o-transition: all .12s ease-in;
+			transition: all .12s ease-in;
+		}
+		.button a:active {
+			padding: 12px 10px 4px 10px;
+			-webkit-transition: all .12s ease-in;
+			-moz-transition: all .12s ease-in;
+			-ms-transition: all .12s ease-in;
+			-o-transition: all .12s ease-in;
+			transition: all .12s ease-in;
+		}	
+		.button:active { 
+			display: inline-block;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px; /* border radius */
+			-moz-background-clip: padding;
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box; /* prevents bg color from leaking outside the border */
+			background-color: #8cc63e; /* layer fill content */
+			-moz-box-shadow: inset 0 5px 0 #67922e; /* inner shadow */
+			-webkit-box-shadow: inset 0 5px 0 #67922e; /* inner shadow */
+			box-shadow: inset 0 5px 0 #67922e; /* inner shadow */
+			-webkit-transition: all .12s ease-in;
+			-moz-transition: all .12s ease-in;
+			-ms-transition: all .12s ease-in;
+			-o-transition: all .12s ease-in;
+			transition: all .12s ease-in;
+		}
+    </style>
+</head>
+<body>
+
+
+            <h1 class="my-header">👋  Hello </h1>
+
+            <% if current_user  %>
+            <%= image_tag(current_user.avatar_thumbnail)  %>
+
+            
+            <br>
+
+            <p  class="button">
+            <%= link_to "edit account" ,edit_user_registration_path  %>
+            </p>
+
+
+            <% else  %>
+
+            <p>
+            <%= link_to "sign up" ,new_user_registration_path %>
+            </p>
+            <p>
+            <%= link_to "sign in" ,new_user_session_path  %>
+            </p>
+            <% end %>
+
+
+    
+</body>
+</html>
+
+

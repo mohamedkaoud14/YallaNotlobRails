@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  root 'pages#myaccount'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
   get "/friends/search", to: "friends#search"
   resources :friends
-  root "friends#index"
+  # root "friends#index"
    
   # resources :friends
  
