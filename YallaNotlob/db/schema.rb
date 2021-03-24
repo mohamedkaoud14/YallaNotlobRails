@@ -19,21 +19,39 @@ ActiveRecord::Schema.define(version: 2021_03_22_201004) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
-  create_table "groups", charset: "latin1", force: :cascade do |t|
-    t.string "group_name"
-    t.bigint "User_id", null: false
+ActiveRecord::Schema.define(version: 2021_03_24_024350) do
+
+  create_table "friends", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "friend_id"
+    t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["User_id"], name: "index_groups_on_User_id"
+    t.index ["users_id"], name: "index_friends_on_users_id"
   end
 
-  create_table "orders", charset: "latin1", force: :cascade do |t|
-    t.string "type"
-    t.string "restaurant_name"
-    t.bigint "User_id", null: false
+  create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "groupusers_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["User_id"], name: "index_orders_on_User_id"
+    t.index ["groupusers_id"], name: "index_group_users_on_groupusers_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groupusers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "group_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "order_type"
+    t.string "restaurant_name"
+    t.string "img"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "sessions", charset: "latin1", force: :cascade do |t|
@@ -62,6 +80,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_201004) do
   end
 
   add_foreign_key "friendships", "users"
-  add_foreign_key "groups", "users", column: "User_id"
-  add_foreign_key "orders", "users", column: "User_id"
+  add_foreign_key "friends", "users", column: "users_id"
+  add_foreign_key "group_users", "groupusers", column: "groupusers_id"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "orders", "users"
 end
