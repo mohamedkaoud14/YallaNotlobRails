@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_024350) do
     t.string "order_type"
     t.string "restaurant_name"
     t.string "img"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
