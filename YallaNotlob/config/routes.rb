@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resource :omniauth
    resource :orders
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
-  #  root "groupusers#index"
    post "/groupusers/new" , to: "groupusers#new"
    get "/groupusers/new" , to: "groupusers#new"
      post "/groupusers/create" , to: "groupusers#create"
@@ -20,6 +19,11 @@ Rails.application.routes.draw do
        get '/users/auth/google_oauth2', to: "groupusers#new"
  
 
+  
+  
+ 
+ 
+  
 end
 
 # <%= link_to "unfriend", "/friends/#{fri.friend_id}" ,

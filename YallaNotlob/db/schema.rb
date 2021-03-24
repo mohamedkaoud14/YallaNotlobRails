@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_024350) do
+ActiveRecord::Schema.define(version: 2021_03_22_201004) do
 
   create_table "active_storage_attachments", charset: "latin1", force: :cascade do |t|
     t.string "name", null: false
@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 2021_03_24_024350) do
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
-  create_table "groupusers", charset: "latin1", force: :cascade do |t|
+  create_table "groupusers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "group_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", charset: "latin1", force: :cascade do |t|
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "order_type"
     t.string "restaurant_name"
     t.string "img"
