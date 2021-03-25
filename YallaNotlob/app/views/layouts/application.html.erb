@@ -14,9 +14,20 @@
   </head>
 
   <body>
-  <div style="height:50px"></div>
+
+  <div class="container">
   <%="welocme ,#{current_user.username}!" if user_signed_in?%> 
   <%=link_to 'Logout', destroy_user_session_path,method: :delete if user_signed_in?%>
-    <%= yield %>
+      <div class="row">
+        <div class="col-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  
   </body>
 </html>
+
+
+
+

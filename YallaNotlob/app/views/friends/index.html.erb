@@ -4,18 +4,47 @@
                 .asd{
                     border : solid 3px ; 
                     text-align: left;
-
-
                 }
 
             body {
             font-family: system-ui;
-            background: #f06d06;
-
+            # background: #f06d06;
+            background: #57628a;
             color: white;
             text-align: center;
         }
-      
+        .left{
+            
+          border : solid 3px  #222329 ; 
+          text-align: center ; 
+          margin-left : 15% ; 
+          margin-right : 15%  ;
+        }
+        .list{
+          list-style-type: none;
+        }
+    .unfreind-btn {
+    display: inline-block;
+    text-align: center;
+    border-radius: 2px;
+    line-height: 19px;
+    cursor: pointer;
+    margin-left: -1px;
+    padding: 4px 15px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+    border: 1px solid #c6c6c6;
+    color: #000;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.unfreind-btn:hover {
+    background-color: #f6f6f6;
+    background-image: -webkit-linear-gradient(top,#f6f6f6,#f1f1f1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
             </style>
 
       </head>
@@ -33,18 +62,15 @@
                   <%= submit_tag("add new friend") %>
                 </div>
               <% end %>
-
-              
-
-
             <h4>friends list</h4>
 
             <div class= "asd">
-            <ul>
+            <ul class="list">
               <% @fris.each do |fri| %>
                 <% @alls.each do |all| %>
                     <%   if fri.friend_id == all.id  %>
-                                <div class="left">
+
+                          <div class="left">
                                 
                               <li>
                             <%= all.username %> |
@@ -53,10 +79,11 @@
 
                             <%= image_tag all.avatar.variant(resize: "70x70")  if all.avatar.attached? %> 
                              
-                              <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete %>
+                              <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete  ,:class => "unfreind-btn" , data: {confirm: "are you sure ?" }%>
                               <%= yield %>
                              
                             </li>
+
                             </div>
 
                     <% end %>
