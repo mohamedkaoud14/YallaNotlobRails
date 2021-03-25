@@ -34,3 +34,16 @@ end
 # <%= link_to "unfriend", "/friends/" ,
 #                   method: :delete,
 #                   data: { confirm: "Are you sure you want to unfriend him?" } %>
+
+
+# <div class="field">
+    
+#     <% if resource.avatar.attached?  %>
+
+#     <%= image_tag(resource.avatar) %>
+
+#     <% else  %>
+#     <%= image_tag("/default.jpeg") %>
+    
+#     <% end %>
+#   </div>
