@@ -13,6 +13,8 @@ Rails.application.routes.draw do
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
    post "/groupusers/new" , to: "groupusers#new"
    get "/groupusers/new" , to: "groupusers#new"
+     post "/orders/new" , to: "groupusers#new"
+   get "/orders/new" , to: "groupusers#new"
      post "/groupusers/create" , to: "groupusers#create"
    get "/groupusers/create" , to: "groupusers#create"  
       post '/users/auth/google_oauth2', to: "groupusers#new"

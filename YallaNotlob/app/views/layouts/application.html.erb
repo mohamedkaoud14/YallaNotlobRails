@@ -5,28 +5,45 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "/stylesheets/nav.scss"%>
+     <%= stylesheet_link_tag "/stylesheets/global.scss"%>
 
   
    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
    
-    
-  </head>
+    <% if user_signed_in? %> 
+  </head ">
+<header>
+<nav class="navbar navbar-inverse" >
+	<div class="container">
+		<div class="navbar-header">
 
-  <body>
-
-  <div class="container">
-  <%="welocme ,#{current_user.username}!" if user_signed_in?%> 
-  <%=link_to 'Logout', destroy_user_session_path,method: :delete if user_signed_in?%>
-      <div class="row">
-        <div class="col-12">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+	 
+         <%="welocme ,#{current_user.username}!" if user_signed_in? %> 
   
-  </body>
+    
+   
+    <%= image_tag current_user.avatar.variant(resize: "70x70")  if user_signed_in? %>
+ 
+
+   	<%= link_to 'Home', root_path, :class => 'navbar-brand'  %>
+     <%= link_to 'Friends', friends_path, :class => 'navbar-brand' %>
+     <%= link_to 'Groups', groupusers_new_path, :class => 'navbar-brand' %>
+     <%= link_to 'Orders', orders_new_path, :class => 'navbar-brand' %>
+      <%=link_to 'Logout', destroy_user_session_path,:class => 'navbar-brand' ,method: :delete if user_signed_in? %>
+   
+		</div>
+
+	  
+</nav>
+</header>
+<%end%>
+<%= yield %>
+</body>
 </html>
+         
+          
 
 
 
