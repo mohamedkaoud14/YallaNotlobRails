@@ -25,26 +25,43 @@
              <li>
              
              <%= usereman.username %>
-             <%= link_to "Add user", orders_new_path( :account_id =>  userfriend.friend_id ),method: :get %>
-             <% end %>       
+             <%= link_to "Add user", orders_new_path( :friendd_id =>  userfriend.friend_id ),method: :get %>
+             
+             
+             <% end %>    
+             
+
         </li>
+       
          <% end %>
+         
          <% end %>
+
 
       </div>
       <br></br>
-
-
-     
-
      
       <br></br>
       <%= label_tag 'friends that you invited '%>
-      <div div style="border:1px solid ;width:35%">
+      <div style="border:1px solid ;width:35%">
+      
+      <%= @invitedfriend %>
+      
+      <li>
+     
+    
+      
+      
+    
+
+     
+      </li>
+
                       
          
       </div>
-        
+      
+     
    
     <div>
     <br></br>

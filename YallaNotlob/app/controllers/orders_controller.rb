@@ -14,6 +14,9 @@ class OrdersController < ApplicationController
       @arr<<(User.where(id: friendf.friend_id).pluck(:username))
     end
 
+    @invitedfriend =User.where(id:params[:friendd_id]).pluck(:username)
+
+
   end
 
   def create

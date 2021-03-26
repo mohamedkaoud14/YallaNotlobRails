@@ -21,8 +21,8 @@ Rails.application.routes.draw do
        get '/users/auth/google_oauth2', to: "groupusers#new"
 
 
-       post "/orders/new" , to: "orders#new"
-   get "/orders/new" , to: "orders#new"
+       post "/orders/new/:friendd_id" , to: "orders#new"
+   get "/orders/new/:friendd_id" , to: "orders#new"
  
 
   
