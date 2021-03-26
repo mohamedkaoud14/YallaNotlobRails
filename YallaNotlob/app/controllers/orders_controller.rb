@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def new
     @order=Order.new
+    @users=User.all
     @orders=Order.all
     @friends=Friendship.all
     @friend =Friendship.where(user_id:current_user.id)

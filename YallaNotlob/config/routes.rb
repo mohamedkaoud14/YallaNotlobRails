@@ -17,6 +17,10 @@ Rails.application.routes.draw do
    get "/groupusers/create" , to: "groupusers#create"  
       post '/users/auth/google_oauth2', to: "groupusers#new"
        get '/users/auth/google_oauth2', to: "groupusers#new"
+
+
+       post "/orders/new" , to: "orders#new"
+   get "/orders/new" , to: "orders#new"
  
 
   
