@@ -72,14 +72,14 @@
 
                           <div class="left">
                                 
-                              <li>
+                              <li  id="">
                             <%= all.username %> |
                             <%= all.email %> | 
                            
 
                             <%= image_tag all.avatar.variant(resize: "70x70")  if all.avatar.attached? %> 
                              
-                              <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete  ,:class => "unfreind-btn" , data: {confirm: "are you sure ?" }%>
+                              <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete  ,:class => "unfreind-btn destroy" , data: {confirm: "are you sure ?" }%>
                               <%= yield %>
                              
                             </li>

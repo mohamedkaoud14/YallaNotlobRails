@@ -34,11 +34,11 @@ class FriendsController < ApplicationController
      @alls.each do |all|
         
         if  @item == all.email 
-          Friendship.new(user_id:current_user.id , friend_id:all.id).save 
-          Friendship.new(user_id:all.id , friend_id:current_user.id).save 
-
+          if  Friendship.new(user_id:current_user.id , friend_id:all.id).save && Friendship.new(user_id:all.id , friend_id:current_user.id).save 
+           
           # @asd = @userid
           redirect_to  "/friends"
+          end
         end
       end 
   end
