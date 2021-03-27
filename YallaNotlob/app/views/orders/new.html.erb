@@ -1,4 +1,6 @@
+
 <%= form_tag("/orders/create", method:"get") do  %>
+
     <div>
     <%= label_tag 'oreder_type'  %>
     <div>
@@ -6,55 +8,76 @@
      
      </div>
      <div>
+
       <%= label_tag 'From'  %>
       </div>
-      <%= text_field_tag(:restaurant_name) %>
+      <%= text_field_tag(:restaurant_name) %><br></br>
 
 
-      <div>
-      <%= label_tag 'friends'  %>
+
+      <%= label_tag 'invit your friend'  %>
+      <div style="border:1px solid ;width:35%" >
+      
+      <% @users.each  do |usereman| %>
+        <% @friend.each  do |userfriend| %>
+       
+       
+        
+             <% if userfriend.friend_id ==  usereman.id  %>
+             <li>
+             
+             <%= usereman.username %>
+             <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id ),method: :get %>
+             
+             
+             <% end %>    
+             
+
+        </li>
+       
+         <% end %>
+         
+         <% end %>
+
 
       </div>
-        
-      <div>
       
-      <%= text_field_tag(:group_name) %>
-
-    </div>
-    <div>
-     <%= submit_tag "add new group", :class => "btn btn-primary", :id => "add" %>
-    
-    </div>
-      <ul style="border:1px solid ;width:35%" id="list">
-  
-      <% @orders.each  do |order| %>
-        <li>
-            <%= order.order_type %>
-    
-      
-        <%= yield %> 
+     
+      <br></br>
+      <%= label_tag 'friends that you invited '%>
+      <div style="border:1px solid ;width:35%">
     
      
-          
-          
-        </li>
-
-        
-      <% end %>
-    </ul>
- 
-    <div style="border:1px solid ;width:35%" id="list">
-    <ul >        
-<% @arr.each  do |userfind| %>
-    <li>
-       
-         <%= userfind[0] %>
-
-    </li>
-     <% end %>
+      <% @invitedfriends.each  do |usereman| %>
       
-</ul>
+      <%= usereman[0].username %>
+    
+    
+      <%=link_to 'uninvite',  orders_new_path(:invite_id => usereman[0].id), method: :get, data: { confirm: "Are you sure?" } %>
+
+      <br/>
+      <% end %>
+      
+      <li>
+     
+    
+      
+      
+    
+
+     
+      </li>
+
+                      
+         
+      </div>
+      
+    <br></br>
+     <%= submit_tag "add new order", :class => "btn btn-primary", :id => "add" %>
+    
     </div>
+      
+ 
     
     </div>
   <% end %>
