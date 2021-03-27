@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "friend_id"
     t.index ["users_id"], name: "index_friends_on_users_id"
   end
 
@@ -118,7 +117,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "friends", "users", column: "friend_id", name: "friends_ibfk_1"
   add_foreign_key "friends", "users", column: "users_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "group_users", "groupusers", column: "groupusers_id"

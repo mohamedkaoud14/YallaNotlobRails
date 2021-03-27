@@ -20,8 +20,8 @@ class OrdersController < ApplicationController
     @invitedfriend =User.where(id:params[:friendd_id]).pluck(:username)
     @user_invite =Friendship.where(friend_id:params[:friendd_id])
     @user_invite.update(user_invitation:1)
-    @friedsinvited=Friendship.where(user_invitation:1)
-
+    @friedsinvited=Friendship.where(user_invitation:1 )
+   
     @invitedfriends=[]
     @friedsinvited.each do |friendf| 
       @invitedfriends<<User.where(id:friendf.friend_id)
