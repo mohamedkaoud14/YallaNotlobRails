@@ -12,14 +12,36 @@
  
  
   <ul style="border:1px solid ;width:35%" id="list">
+    <%= link_to "Addusers", groupusers_new_path(:user_id => current_user.id),method: :get%>
   
-  <% @groupusers.each  do |groupuser| %>
+  <% @currentgroupusers.each  do |groupuser| %>
     <li>
-        <%= groupuser.group_name %>
+        <%= groupuser[0].group_name%>
 
-         <%= link_to "Adduser", edit_groupusers_url(:account_id => groupuser.id),method: :get%>
-  <%=link_to 'DElETuser',  groupusers_path(:account_id => groupuser.id), method: :delete, data: { confirm: "Are you sure?" } %>
+         <%= link_to "Showusers", groupusers_new_path(:account_id => groupuser[0].id),method: :get%>
+  <%=link_to 'Deletegroup',  groupusers_path(:account_id => groupuser[0].id), method: :delete, data: { confirm: "Are you sure?" } %>
+           
+
+             <div  style="border:1px solid ;width:75% ;margin-top:5%" id="list">
+            <h5>  chooce Friends to add in    <%= groupuser[0].group_name%> Group</h5>
+<ul>
+  
+<%   @currentuserfriendsnamer.each  do |userfindff| %>
+    <li>
+       
+         <%= userfindff[0].username%>
+         <% @flage %>
+    <%= link_to "Adduser", groupusers_new_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get%>
     
+
+
+    </li>
+      
+     
+       <% end %>
+</ul>
+</div>
+
     <%= yield %> 
 
  
@@ -28,8 +50,27 @@
     </li>
   <% end %>
 </ul>
-  <% render inline: '/groupusers/edit'%>
+ 
+<div  style="border:1px solid ;width:35%" id="list">
+
+
+<ul >        
+<% @arr.each  do |userfind| %>
+    <li>
+       
+         <%= userfind[0].username %>
+         <%= userfind[0].id %>
+         <% @userfind=userfind[0].id%>
+          <%=link_to 'DElETuser',  groupusers_edit_path(:delfriend_id => userfind[0].id), method: :delete, data: { confirm: "Are you sure?" } %>
+
+    </li>
+     <% end %>
+      
+</ul>
+</div>
+
   
+
 
 
 
