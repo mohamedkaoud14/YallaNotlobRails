@@ -51,20 +51,23 @@
     <body>
             <h3>friends</h3>
 
-            <div class= "add-freind">
-            <%= form_tag("/friends/search", method:"get") do  %>
+            <div class= "add-friend">
+          <%= form_tag("/friends/search", method:"get",remote: true  ) do  %>
                 <div>
                   
                   <%= text_field_tag(:q) %>
 
                 </div>
-                <div>
-                  <%= submit_tag("add new friend") %>
+                <div id="add-friend">
+              <%= submit_tag("add new friend") %>
                 </div>
+              
               <% end %>
+
+
             <h4>friends list</h4>
 
-            <div class= "asd">
+            <div id= "asd">
             <ul class="list">
               <% @fris.each do |fri| %>
                 <% @alls.each do |all| %>
@@ -79,12 +82,16 @@
 
                             <%= image_tag all.avatar.variant(resize: "70x70")  if all.avatar.attached? %> 
                              
-                              <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete  ,:class => "unfreind-btn destroy" , data: {confirm: "are you sure ?" }%>
+                              <%= link_to 'unfriend', friend_path(fri.friend_id) , 
+                              method: :delete  ,:class => "unfreind-btn destroy delete" ,
+                               data: {confirm: "are you sure ?",remote: true }   %>
                               <%= yield %>
                              
                             </li>
 
                             </div>
+
+                            
 
                     <% end %>
                 

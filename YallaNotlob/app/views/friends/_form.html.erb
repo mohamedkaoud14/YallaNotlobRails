@@ -1,0 +1,23 @@
+    <% @friends.each do |fri| %>
+        <% @alls.each do |all| %>
+            <%   if fri.friend_id == all.id and fri.friend_id != current_user.id %>
+
+                  <div class="left">
+                        
+                      <li  id="">
+                    <%= all.username %> |
+                    <%= all.email %> | 
+                    <%= image_tag all.avatar.variant(resize: "70x70")  if all.avatar.attached? %> 
+                     
+                      <%= link_to 'unfriend', friend_path(fri.friend_id) , method: :delete  ,:class => "unfreind-btn destroy delete" , data: {confirm: "are you sure ?"  ,remote: true}%>
+                      <%= yield %>
+                     
+                    </li>
+
+                    </div>
+            <% end %>
+        
+      <% end %>
+      <% end %>
+
+
