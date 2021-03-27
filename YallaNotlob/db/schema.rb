@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_214128) do
   create_table "friendships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "friend_id", null: false
-    t.boolean "user_invitation"
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
@@ -90,6 +89,15 @@ ActiveRecord::Schema.define(version: 2021_03_26_214128) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "user_invitations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_user_invitations_on_order_id"
+    t.index ["user_id"], name: "index_user_invitations_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -113,4 +121,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_214128) do
   add_foreign_key "group_users", "groupusers", column: "groupusers_id"
   add_foreign_key "group_users", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "user_invitations", "orders"
+  add_foreign_key "user_invitations", "users"
 end

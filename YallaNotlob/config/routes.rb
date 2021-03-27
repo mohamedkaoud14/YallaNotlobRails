@@ -16,6 +16,10 @@ Rails.application.routes.draw do
    get "/groupusers/new" , to: "groupusers#new"
      post "/orders/new" , to: "groupusers#new"
    get "/orders/new" , to: "groupusers#new"
+
+   post "/orders/show" , to: "orders#show"
+   get "/orders/show" , to: "orders#show"
+
      post "/groupusers/create" , to: "groupusers#create"
    get "/groupusers/create" , to: "groupusers#create"  
       post '/users/auth/google_oauth2', to: "omniauth#google_oauth2"
@@ -24,8 +28,8 @@ Rails.application.routes.draw do
        get '/users/auth/facebook', to: "omniauth#facebook"
 
 
-       post "/orders/new" , to: "orders#new"
-   get "/orders/new" , to: "orders#new"
+       post "/orders/new/:friendd_id" , to: "orders#new"
+   get "/orders/new/:friendd_id" , to: "orders#new"
  
 
   
