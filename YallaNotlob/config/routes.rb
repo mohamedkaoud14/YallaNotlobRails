@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#myaccount'
+  # devise_for :users
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
   get "/friends/search", to: "friends#search"
   resources :friends
@@ -17,8 +18,10 @@ Rails.application.routes.draw do
    get "/orders/new" , to: "groupusers#new"
      post "/groupusers/create" , to: "groupusers#create"
    get "/groupusers/create" , to: "groupusers#create"  
-      post '/users/auth/google_oauth2', to: "groupusers#new"
-       get '/users/auth/google_oauth2', to: "groupusers#new"
+      post '/users/auth/google_oauth2', to: "omniauth#google_oauth2"
+       get '/users/auth/google_oauth2', to: "omniauth#google_oauth2"
+         post '/users/auth/facebook', to: "omniauth#facebook"
+       get '/users/auth/facebook', to: "omniauth#facebook"
 
 
        post "/orders/new" , to: "orders#new"

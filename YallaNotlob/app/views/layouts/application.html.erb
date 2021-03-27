@@ -24,7 +24,7 @@
   
     
    
-    <%= image_tag current_user.avatar.variant(resize: "70x70")  if user_signed_in? %>
+    <%= image_tag current_user.avatar.variant(resize: "70x70")  if  current_user.avatar.attached?  %>
  
 
    	<%= link_to 'Home', root_path, :class => 'navbar-brand'  %>
