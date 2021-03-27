@@ -11,6 +11,15 @@ class GroupusersController < ApplicationController
          @groupusersfrel=Groupsuserrela.new
           @arr =[]
         @friendsarr =[]
+        @currentuserfriendsnamer=[]
+        @myfrind=[]
+        @currentuserfriends=Friendship.where(user_id: current_user.id)
+       
+        # @currentuserfriends.each do |keyy|
+        #   @currentuserfriendsnamer<<User.where(id:keyy.)
+        #  end
+
+      
 
         @groupuser= Groupuser.new(group_name:params[:group_name])
         @groupuser.save
@@ -22,13 +31,6 @@ class GroupusersController < ApplicationController
 
         @fgroup=Groupuser.where(group_name:params[:group_name])
       @userss=User.all
-
-        
-       
-     
-       
-        
-
         # @groupuserf = Groupuser.find_by(id:params[:account_id])
   
         @groupusersf =Groupsuserrela.where(groupuser_id:params[:account_id])
@@ -44,7 +46,7 @@ class GroupusersController < ApplicationController
         @friendgroups.each do |curntgroup|
         @currentgroupusers<<Groupuser.where(id:curntgroup.groupuser_id )
          end
-
+  
          end
 
 
@@ -54,7 +56,7 @@ class GroupusersController < ApplicationController
       @groupuser= Groupuser.new(group_name:params[:group_name])
       @groupuser.save
       @groupusersfrel =Groupsuserrela.new(user_id:current_user.id,groupuser_id:@groupuser.id).save
-
+     
        
 
          
