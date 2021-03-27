@@ -14,6 +14,9 @@ Rails.application.routes.draw do
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
    post "/groupusers/new" , to: "groupusers#new"
    get "/groupusers/new" , to: "groupusers#new"
+
+    post "/groupusers/add" , to: "groupusers#add"
+   get "/groupusers/add" , to: "groupusers#add"
      delete "/groupusers/edit" , to: "groupusers#edit"
         #  delete"/groupusers/edit/:delfriend_id" , to: "groupusers#edit"
      post "/orders/new" , to: "groupusers#new"

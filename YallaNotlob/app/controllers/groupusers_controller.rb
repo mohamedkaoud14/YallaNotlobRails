@@ -5,19 +5,28 @@ class GroupusersController < ApplicationController
     end 
 
     def new
+
        @groupusers=Groupuser.all
      @groupuserss=Groupsuserrela.all
      @groupuser= Groupuser.new
          @groupusersfrel=Groupsuserrela.new
           @arr =[]
+          @userfind=0;
+          
         @friendsarr =[]
-        @currentuserfriendsnamer=[]
-        @myfrind=[]
-        @currentuserfriends=Friendship.where(user_id: current_user.id)
+         @currentuserfriendsnamer=[]
+      @nocurrentuserfriendsnamer=[]
+          @currentuserfriendsnamer=[]
+      @nocurrentuserfriendsnamer=[]
+        @currentuserfriends=Friendship.where(user_id:params[:user_id])
+
+           @currentuserfriends.each do |user| 
+          @currentuserfriendsnamer<<(User.where(id: user.friend_id))
+        end
+  
        
-        # @currentuserfriends.each do |keyy|
-        #   @currentuserfriendsnamer<<User.where(id:keyy.)
-        #  end
+        
+          
 
       
 
@@ -32,14 +41,38 @@ class GroupusersController < ApplicationController
         @fgroup=Groupuser.where(group_name:params[:group_name])
       @userss=User.all
         # @groupuserf = Groupuser.find_by(id:params[:account_id])
-  
+        
         @groupusersf =Groupsuserrela.where(groupuser_id:params[:account_id])
+        @groupuserexist=Groupsuserrela.find_by(user_id:params[:addfriend_id],groupuser_id:params[:groupid])
+        if(@groupuserexist)
+          redirect_to "/groupusers/new"
+        else 
+        @Adduser=Groupsuserrela.new(user_id:params[:addfriend_id],groupuser_id:params[:groupid]).save
+        end
+
+
+       
+        
+        #  redirect_to "/groupusers/new"
+          
+        #   else
+
+        #     edirect_to "/groupusers/new"
+        # end
+
+
 
          
        
         @groupusersf.each do |groupusersf| 
           @arr<<(User.where(id: groupusersf.user_id))
         end
+
+        #  @groupusersf.each do |groupusersf| 
+        #    @nocurrentuserfriendsnamer<<Friendship.where.not(friend_id:groupusersf.user_id)
+
+        #  end
+         
 
         @currentgroupusers=[]
         @friendgroups=Groupsuserrela.where(user_id:current_user.id)
@@ -95,4 +128,15 @@ class GroupusersController < ApplicationController
         @delGroupsuserrelaf.destroy
         redirect_to "/groupusers/new"
  end
+
+
+ 
+ def add
+
+    
+                  # redirect_to "/groupusers/new"
+
+ end
+ 
+
 end
