@@ -1,4 +1,6 @@
+
 <%= form_tag("/orders/create", method:"get") do  %>
+
     <div>
     <%= label_tag 'oreder_type'  %>
     <div>
@@ -25,28 +27,51 @@
              <li>
              
              <%= usereman.username %>
-             <%= link_to "Add user", orders_new_path( :account_id =>  userfriend.friend_id ),method: :get %>
-             <% end %>       
+             <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id ),method: :get %>
+             
+             
+             <% end %>    
+             
+
         </li>
+       
          <% end %>
+         
          <% end %>
+
 
       </div>
-      <br></br>
-
-
-     
-
+      
      
       <br></br>
       <%= label_tag 'friends that you invited '%>
-      <div div style="border:1px solid ;width:35%">
+      <div style="border:1px solid ;width:35%">
+    
+     
+      <% @invitedfriends.each  do |usereman| %>
+      
+      <%= usereman[0].username %>
+    
+    
+      <%=link_to 'uninvite',  orders_new_path(:invite_id => usereman[0].id), method: :get, data: { confirm: "Are you sure?" } %>
+
+      <br/>
+      <% end %>
+      
+      <li>
+     
+    
+      
+      
+    
+
+     
+      </li>
+
                       
          
       </div>
-        
-   
-    <div>
+      
     <br></br>
      <%= submit_tag "add new order", :class => "btn btn-primary", :id => "add" %>
     

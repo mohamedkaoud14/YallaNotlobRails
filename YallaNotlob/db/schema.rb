@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_024350) do
+ActiveRecord::Schema.define(version: 2021_03_26_214240) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -45,12 +45,14 @@ ActiveRecord::Schema.define(version: 2021_03_24_024350) do
     t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "friend_id"
     t.index ["users_id"], name: "index_friends_on_users_id"
   end
 
   create_table "friendships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "friend_id", null: false
+    t.boolean "user_invitation"
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
@@ -89,6 +91,15 @@ ActiveRecord::Schema.define(version: 2021_03_24_024350) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "user_invitations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_user_invitations_on_order_id"
+    t.index ["user_id"], name: "index_user_invitations_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -107,9 +118,12 @@ ActiveRecord::Schema.define(version: 2021_03_24_024350) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "friends", "users", column: "friend_id", name: "friends_ibfk_1"
   add_foreign_key "friends", "users", column: "users_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "group_users", "groupusers", column: "groupusers_id"
   add_foreign_key "group_users", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "user_invitations", "orders"
+  add_foreign_key "user_invitations", "users"
 end
