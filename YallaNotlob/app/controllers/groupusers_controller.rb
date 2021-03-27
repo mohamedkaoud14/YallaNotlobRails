@@ -1,50 +1,96 @@
 class GroupusersController < ApplicationController
     def index
      @groupusers=Groupuser.all
-     @groupuserss=GroupUser.all
+     @groupuserss=Groupsuserrela.all
     end 
 
     def new
-        @groupuser= Groupuser.new
-        @groupusers=Groupuser.all
+       @groupusers=Groupuser.all
+     @groupuserss=Groupsuserrela.all
+     @groupuser= Groupuser.new
+         @groupusersfrel=Groupsuserrela.new
+          @arr =[]
+        @friendsarr =[]
 
-      end
-    
+        @groupuser= Groupuser.new(group_name:params[:group_name])
+        @groupuser.save
+        @groupusersfrel =Groupsuserrela.new
+
+
+      @groupuser= Groupuser.new(group_name:params[:group_name])
+        @groupuser.save
+
+        @fgroup=Groupuser.where(group_name:params[:group_name])
+      @userss=User.all
+
+        
+       
+     
+       
+        
+
+        # @groupuserf = Groupuser.find_by(id:params[:account_id])
+  
+        @groupusersf =Groupsuserrela.where(groupuser_id:params[:account_id])
+
+         
+       
+        @groupusersf.each do |groupusersf| 
+          @arr<<(User.where(id: groupusersf.user_id))
+        end
+
+        @currentgroupusers=[]
+        @friendgroups=Groupsuserrela.where(user_id:current_user.id)
+        @friendgroups.each do |curntgroup|
+        @currentgroupusers<<Groupuser.where(id:curntgroup.groupuser_id )
+         end
+
+         end
+
+
       def create
+     
 
-        @groupuser = Groupuser.new(group_name:params[:group_name])
-        if @groupuser.save
-          redirect_to "/groupusers/new"
+      @groupuser= Groupuser.new(group_name:params[:group_name])
+      @groupuser.save
+      @groupusersfrel =Groupsuserrela.new(user_id:current_user.id,groupuser_id:@groupuser.id).save
+
+       
+
+         
+       
+
+    
+        if @groupuser.save  {
+        
+        
+   
+        redirect_to "/groupusers/new"
+      }
         else
           render :new
         end
       end
 
+
+
+
+
        def destroy
-       @groupuserf = Groupuser.find_by(id:params[:account_id])
-
-        @groupuserf.destroy
-        redirect_to root_path
-        end
-
-        def edit
-           @arr =[]
-
-                    
-      
-        @groupuserf = Groupuser.find_by(id:params[:account_id])
-        # @groupusersf =GroupUser.find_by(groupusers_id:params[:account_id])
-        @groupusersf =GroupUser.where(groupusers_id:params[:account_id])
-        # @userfind=User.find_by(id: @groupusersf.user_id)
-        # @userfind=User.all(:conditions => "id ='1'")
-        @groupusersf.each do |groupusersf| 
-          @arr<<(User.where(id: groupusersf.user_id).pluck(:username))
-        end
-
+       @Groupsuserrelaf = Groupuser.find_by(id:params[:account_id])
         
-                #  redirect_to "/groupusers/new"
 
+        @Groupsuserrelaf.destroy
+        
+        redirect_to "/groupusers/new"
         end
+ 
+ def edit
+ 
+        @delGroupsuserrelaf = Groupsuserrela.find_by(user_id:params[:delfriend_id])
 
-
+      
+        @delGroupsuserrelaf.destroy
+        redirect_to "/groupusers/new"
+ end
 end

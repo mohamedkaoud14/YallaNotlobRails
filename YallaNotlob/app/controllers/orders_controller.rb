@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
       @invitedfriends<<User.where(id:friendf.friend_id)
 
       
-      # 
+      
     end
 
     @uninvtefriend=Friendship.where(friend_id:params[:invite_id])
