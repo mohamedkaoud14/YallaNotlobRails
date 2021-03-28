@@ -7,7 +7,8 @@ import * as ActiveStorage from "@rails/activestorage";
 import Rails from "@rails/ujs";
 import "channels";
 import Turbolinks from "turbolinks";
-require("jquery");
+require('jquery');
+// require("jquery");
 
 Rails.start();
 Turbolinks.start();

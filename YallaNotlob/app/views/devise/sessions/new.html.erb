@@ -4,22 +4,14 @@
     <title>YallaNotlob</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-  
-   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= csp_meta_tag %>  
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "/stylesheets/application.scss"%>
+
     <style>
-    .container{
-      margin-left: 20% ;    
-      margin-top: 5% ;    
-
-
-    }
     
+
     </style>
-   
-    
   </head>
 
   <body>
@@ -39,7 +31,7 @@
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field" >
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>

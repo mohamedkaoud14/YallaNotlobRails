@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>Comment</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<br><br><br>
+<%= image_tag("checkout.svg", :width => "70") %><h1>Create Your Order</h1>
+<%= form_with model: @order do |form| %>
+  <div>
+    <%= form.label :item %><br>
+    <%= form.text_field :item %>
+  </div>
+
+
+  
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :price %><br>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div>
+    <%= form.submit "Add" %>
+  </div>
+<% end %>
+
+
+
+

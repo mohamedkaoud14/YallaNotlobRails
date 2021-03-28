@@ -114,6 +114,36 @@
             </p>
             <% end %>
 
+<br/>
+
+<div style="border:1px solid ;display:inline-block;width:70%" >
+<%= label_tag 'your invitaions'  %>
+
+	<% @invitations.each  do |userfriend| %>
+   
+		 <li>
+		 
+		 
+		 <h3 style="display:inline-block;margin-right:50px">your friend <%= userfriend[0].username %> invited you in a new order  </h3>
+
+         <%= link_to "accept",pages_accept_path(:accept_id => userfriend[0].id), method: :get%>
+         <%=link_to 'reject', pages_destroy_path(:accept_id => userfriend[0].id),method: :delete, data: { confirm: "Are you sure?" } %>
+           
+		 <% end %>  
+		 </li>
+</div>
+<br/><br/>
+<div>
+  <% @currentuserorder.each do |order|%>
+	<li>
+	<h3 style="display:inline-block;margin-right:50px"><%= order.order_type %> on <%= order.created_at %></h3>
+	</li>
+
+<%end%>
+</div>
+
+
+
 
     
 </body>
