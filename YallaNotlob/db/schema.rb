@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_233042) do
+ActiveRecord::Schema.define(version: 2021_03_28_175741) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -45,7 +45,20 @@ ActiveRecord::Schema.define(version: 2021_03_27_233042) do
     t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "friend_id"
     t.index ["users_id"], name: "index_friends_on_users_id"
+  end
+
+  create_table "friendship_invitations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.boolean "status"
+    t.boolean "joined"
+    t.bigint "friend_id"
+    t.bigint "user_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_friendship_invitations_on_order_id"
+    t.index ["user_id"], name: "index_friendship_invitations_on_user_id"
   end
 
   create_table "friendships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -127,7 +140,10 @@ ActiveRecord::Schema.define(version: 2021_03_27_233042) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "friends", "users", column: "friend_id", name: "friends_ibfk_1"
   add_foreign_key "friends", "users", column: "users_id"
+  add_foreign_key "friendship_invitations", "orders"
+  add_foreign_key "friendship_invitations", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "group_users", "groupusers", column: "groupusers_id"
   add_foreign_key "group_users", "users"

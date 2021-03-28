@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
     @orders=Order.all
     @friends=Friendship.all
     @friend =Friendship.where(user_id:current_user.id)
+
+
     # @arrorder=[]
     # @currentuserorder.each do |order| 
     #   @arrorder<<(User.where(id: order.friend_id).pluck(:username))
@@ -20,13 +22,17 @@ class OrdersController < ApplicationController
     end
 
     @invitedfriend =User.where(id:params[:friendd_id]).pluck(:username)
-    @user_invite =Friendship.where(friend_id:params[:friendd_id])
-    @user_invite.update(user_invitation:1)
-    @friedsinvited=Friendship.where(user_invitation:1,user_id:current_user.id)
+    @user_invite =FriendshipInvitation.where(friend_id:params[:friendd_id],order_id:[:order_id])
+    @user_invite.update(status:1)
+    @friedsinvited=FriendshipInvitation.where(status:1,user_id:current_user.id,order_id:params[:order_id])
 
     @invitedfriends=[]
     @friedsinvited.each do |friendf| 
       @invitedfriends<<User.where(id:friendf.friend_id)
+
+
+      ##################user_invitaions############
+     
 
       
       
