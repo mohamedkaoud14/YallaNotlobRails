@@ -27,7 +27,7 @@
    	<%= link_to 'Home', root_path, :class => 'navbar-brand'  %>
      <%= link_to 'Friends', friends_path, :class => 'navbar-brand' %>
      <%= link_to 'Groups', groupusers_new_path, :class => 'navbar-brand' %>
-     <%= link_to 'Orders', orders_new_path, :class => 'navbar-brand' %>
+     <%= link_to 'Orders', orders_index_path, :class => 'navbar-brand' %>
       <%=link_to 'Logout', destroy_user_session_path,:class => 'navbar-brand' ,method: :delete if user_signed_in? %>
    
 		</div>

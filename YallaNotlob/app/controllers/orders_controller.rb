@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
    @deletedOrder=Order.find_by(id: params[:order_id])
    @deletedOrder.destroy
   end
+  
   def new
     @order=Order.new
     @users=User.all
