@@ -1,0 +1,60 @@
+<%= form_with(model:Groupuser , local:true) do |form| %>
+  <ul style="border:1px solid ;width:35%" id=" id="myshow">
+    <%= link_to "Addusers", groupusers_show_path(:user_id => current_user.id),method: :get , remote:true %>
+  
+  <% $currentgroupusers.each  do |groupuser| %>
+    <li>
+        <%= groupuser[0].group_name%>
+       
+         <%= link_to "Showusers", groupusers_display_path(:account_id => groupuser[0].id),method: :get ,remote:true %>
+     
+  <%=link_to 'Deletegroup',  groupusers_path(:account_id => groupuser[0].id), method: :delete, data: { confirm: "Are you sure?" ,remote:true},class:"deletee" %>
+           
+
+             <div  style="border:1px solid ;width:75% ;margin-top:5%" id="list">
+            <h5>  chooce Friends to add in    <%= groupuser[0].group_name%> Group</h5>
+<ul>
+  
+<%   $currentuserfriendsnamer.each  do |userfindff| %>
+    <li>
+       
+         <%= userfindff[0].username%>
+         <% $flage %>
+    <%= link_to "Adduser", groupusers_new_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get%>
+    
+
+
+    </li>
+      
+     
+       <% end %>
+</ul>
+</div>
+
+    <%= yield %> 
+
+ 
+      
+      
+    </li>
+  <% end %>
+</ul>
+ 
+<div  style="border:1px solid ;width:35%" id="list">
+
+
+<ul >        
+<% $arr.each  do |userfind| %>
+    <li>
+       
+         <%= userfind[0].username %>
+         <%= userfind[0].id %>
+         <% $userfind=userfind[0].id%>
+          <%=link_to 'DElETuser',  groupusers_edit_path(:delfriend_id => userfind[0].id), method: :delete, data: { confirm: "Are you sure?",remote:true,remote:true },class:"delete" %>
+
+    </li>
+     <% end %>
+      
+</ul>
+</div>
+<%end%>

@@ -15,6 +15,12 @@ Rails.application.routes.draw do
    post "/groupusers/new" , to: "groupusers#new"
    get "/groupusers/new" , to: "groupusers#new"
 
+    post "/groupusers/display" , to: "groupusers#display"
+   get "/groupusers/display" , to: "groupusers#display"
+
+    post "/groupusers/show" , to: "groupusers#show"
+   get "/groupusers/show" , to: "groupusers#show"
+
 
    post "/pages/accept" , to: "pages#accept"
    get "/pages/accept" , to: "pages#accept"

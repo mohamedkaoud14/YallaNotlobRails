@@ -10,11 +10,9 @@
   
    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <%= stylesheet_link_tag "/stylesheets/nav.scss"%>
-     <%= stylesheet_link_tag "/stylesheets/global.scss"%>
    
     <% if user_signed_in? %> 
-  </head ">
+    </head ">
 <header>
 <nav class="navbar navbar-inverse" >
 	<div class="container">
@@ -37,6 +35,7 @@
 	  
 </nav>
 </header>
+  
 <%end%>
 <%= yield %>
 </body>
