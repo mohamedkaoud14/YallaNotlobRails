@@ -9,8 +9,10 @@ class OrdersController < ApplicationController
     @orders=Order.all
     @friends=Friendship.all
     @friend =Friendship.where(user_id:current_user.id)
-
-   
+    # @arrorder=[]
+    # @currentuserorder.each do |order| 
+    #   @arrorder<<(User.where(id: order.friend_id).pluck(:username))
+    # end
     
     @arr=[]
     @friend.each do |friendf| 
@@ -60,7 +62,7 @@ class OrdersController < ApplicationController
 
 
   def create
-    @order=Order.new(order_type:params[:order_type],restaurant_name:params[:restaurant_name])
+    @order=Order.new(order_type:params[:order_type],restaurant_name:params[:restaurant_name],user_id:current_user.id)
 
     if @order.save
       redirect_to "/orders/new"
@@ -68,7 +70,4 @@ class OrdersController < ApplicationController
       render :new
     end
   end
-
-   
-  
 end

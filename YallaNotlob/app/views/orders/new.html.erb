@@ -2,9 +2,9 @@
 <%= form_tag("/orders/create", method:"get") do  %>
 
     <div>
-    <%= label_tag 'oreder_type'  %>
+    <%= label_tag 'order_type'  %>
     <div>
-      <%= select_tag(:order_type, options_for_select([['lunch', "lunch"],['breakfast',"breakfast"],['dinner',"dinner"]])) %>
+      <%= select_tag(:order_type, options_for_select([['lunch','lunch' ],['breakfast','breakfast'],['dinner','dinner']])) %>
      
      </div>
      <div>
