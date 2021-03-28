@@ -1,7 +1,13 @@
 class OrdersController < ApplicationController
   def index
-    @orders=Order.all
+    @order=Order.where("user_id = " + current_user.id.to_s + "")
   end
+
+  def finish
+    @a=Order.find(params[:id])
+    @a.update(status: 'Finished')
+  end
+
 
   def new
     @order=Order.new
@@ -37,12 +43,12 @@ class OrdersController < ApplicationController
 
   end
 
-  def show
-    @univite=Friendship.where(friend_id:params[:account_id])
-    @uninvite.update(user_invitation:0)
+ # def show
+  #  @univite=Friendship.where(friend_id:params[:account_id])
+   # @uninvite.update(user_invitation:0)
 
 
-  end
+  #end
 
   def edit
     @article = Article.find(params[:id])

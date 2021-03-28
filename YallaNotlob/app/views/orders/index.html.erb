@@ -1,2 +1,62 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <h2>Orders</h2>
+  <%= link_to "Start New Order","/orders/new" ,{:style=>'float:right;',:class=>"btn btn-info"} %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order</th>
+        <th>Resturnats</th>
+        <th>Invited</th>
+        <th>Joined</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @order.each do |order|  @invitedUsers=UserInvitation.where("order_id = " + order.id.to_s + "").count %>
+      
+      <%  @joinedUsers=UserInvitation.where("order_id = " + order.id.to_s + " and status='yes'").count %>
+      <tr>
+        <td><%= order.order_type %></td>
+        <td><%= order.restaurant_name %></td>
+        <td><%= @invitedUsers %></td>
+        <td><%= @joinedUsers %></td>
+        <td><%= order.status %></td>
+        <td >
+        <%= button_to 'View', 'order_details/OrderDetails/'+order.id.to_s, method: :get,:class=>"btn btn-success" ,:style=>'display-inline;' %></td>
+        <% if order.status=="Waiting" %>
+        <td> 
+       <%= button_to 'Finish', '/finish/'+order.id.to_s, method: :get,:class=>"btn btn-warning" ,:style=>'display-inline;' %></td>
+    
+       <td> 
+       <%= button_to 'Cancel', '/finish/'+order.id.to_s, method: :get,:class=>"btn btn-danger" ,:style=>'display-inline;' %></td>
+       <% end %>
+      </tr>
+      <% end %> 
+      
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+<% if user_signed_in? %>
+  <%= current_user.id %>
+<% else %>
+  <h1>Omnia</h1>
+<% end %>
+
