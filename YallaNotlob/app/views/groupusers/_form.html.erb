@@ -1,38 +1,5 @@
-
-<html>
-<head>
-    <title>forget password</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= stylesheet_link_tag "/stylesheets/groupusers.scss"%>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>  
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <style>
-    body{
-      background: #dd7f36;
-
-    }
-    </style>
-  </head>
-<body>
-<div id="order">
-
-
-
-<%= form_tag("/groupusers/create",remote: true ,method:"get") do  %>
-  <div class="add-new">
-    <div class="group_field">
-      
-      <%= text_field_tag(:group_name) %> 
-
-    </div>
-    <div>
-     <%= submit_tag "add New Group", :class => "btn btn-primary", :id => "add" %>
-    
-    </div>
- 
- <div id="mydiv">
-   <ul style="border:1px solid ;width:35%" id=" id="myshow">
+<%= form_with(model:Groupuser , local:true) do |form| %>
+  <ul style="border:1px solid ;width:35%" id=" id="myshow">
     <%= link_to "Addusers", groupusers_show_path(:user_id => current_user.id),method: :get , remote:true %>
   
   <% $currentgroupusers.each  do |groupuser| %>
@@ -53,7 +20,7 @@
        
          <%= userfindff[0].username%>
          <% $flage %>
-    <%= link_to "Adduser", groupusers_add_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get,remote:true%>
+    <%= link_to "Adduser", groupusers_add_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get ,remote:true%>
     
 
 
@@ -66,10 +33,12 @@
 
     <%= yield %> 
 
+ 
+      
+      
     </li>
   <% end %>
 </ul>
-</div>
  
 <div  style="border:1px solid ;width:35%" id="list">
 
@@ -88,16 +57,4 @@
       
 </ul>
 </div>
-</div>
 <%end%>
-
-</div>
-</body>
-</html>
-  
-
-
-
-
- 
- 
