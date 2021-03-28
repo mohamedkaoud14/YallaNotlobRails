@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap";
-.add_group{
-    width: 50%;
-}
+
 
 body{
     overflow: hidden;
+    // background-image: url(/assets/background.jpg);
+    // background-repeat: no-repeat;
+}
+
+.group_field{
+    width: 50%;
+    margin: 50px;
 }
