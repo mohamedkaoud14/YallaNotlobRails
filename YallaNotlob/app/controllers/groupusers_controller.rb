@@ -247,5 +247,23 @@ def display
 
 
 end
+def add
+  #  $groupusersf =Groupsuserrela.where(groupuser_id:params[:account_id])
+        $groupuserexist=Groupsuserrela.find_by(user_id:params[:addfriend_id],groupuser_id:params[:groupid])
+        if(!($groupuserexist))
+        #   # redirect_to "/groupusers/new"
+          
+        #  end
+        # else 
+        $Adduser=Groupsuserrela.new(user_id:params[:addfriend_id],groupuser_id:params[:groupid]).save
+       
+       
+      end
+             respond_to  do |format|
+        format.js
+ end 
+
+    
+end
 end
  

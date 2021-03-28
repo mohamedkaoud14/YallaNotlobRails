@@ -20,7 +20,7 @@
        
          <%= userfindff[0].username%>
          <% $flage %>
-    <%= link_to "Adduser", groupusers_new_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get%>
+    <%= link_to "Adduser", groupusers_add_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get ,remote:true%>
     
 
 
