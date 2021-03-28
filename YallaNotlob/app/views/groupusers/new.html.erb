@@ -1,7 +1,11 @@
+
+<head>
+<%= stylesheet_link_tag 'groupusers', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 <%= form_tag("/groupusers/create", method:"get") do  %>
     <div>
       
-      <%= text_field_tag(:group_name) %> 
+      <%= text_field_tag :group_name , :id => "add" %> 
 
     </div>
     <div>
