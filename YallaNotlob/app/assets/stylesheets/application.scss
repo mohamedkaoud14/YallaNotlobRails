@@ -14,3 +14,55 @@
  *= require_self
  */
 @import "bootstrap";
+
+  .field{
+    width: 260px;
+    height: 72px;
+    
+  }
+  .action{
+    width: 100px;
+    height: 72px;
+  }
+
+  button, [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+    width: 440px;
+    margin: 18px auto;
+}
+// .hh{
+//   text-align: center;
+// }
+.container{
+    margin-left:38% ;    
+    margin-top: 5% ;    
+  }
+
+  input  {
+    overflow: visible;
+    width: 169%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: -2.5rem;
+
+    // margin-top: 26px;
+    // margin-bottom: 20px;
+
+}
+
+label{
+  height: 50px;
+}
+
+h1{
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    line-height: 0.2;
+
+}
