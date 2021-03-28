@@ -1,110 +1,68 @@
+<html>
+<head>
+    <title>forget password</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "/stylesheets/orders.scss"%>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>  
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+    body{
+      background: #dd7f36;
+
+    }
+    </style>
+  </head>
+<body>
+<div id="order">
 
 <%= form_tag("/orders/create", method:"get") do  %>
-
     <div>
     <%= label_tag 'order_type'  %>
     <div>
       <%= select_tag(:order_type, options_for_select([['lunch','lunch' ],['breakfast','breakfast'],['dinner','dinner']])) %>
-     
      </div>
      <div>
-
-      <%= label_tag 'From'  %>
+      <%= label_tag 'resturant name'  %>
       </div>
       <%= text_field_tag(:restaurant_name) %><br></br>
+      <%= label_tag 'Invit your friend'  %>
+      <div style="border:1px solid ;width:35%" >
+      
+      <% @users.each  do |usereman| %>
+        <% @friend.each  do |userfriend| %>
+             <% if userfriend.friend_id ==  usereman.id  %>
+             <li>
+             <%= usereman.username %>
+             <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id ),method: :get %>
+             <% end %>    
+        </li>
+         <% end %>
+         <% end %>
+      </div>
+      <br></br>
+      <%= label_tag 'friends that you invited '%>
+      <div style="border:1px solid ;width:35%">
+      <% @invitedfriends.each  do |usereman| %>
+      <%= usereman[0].username %>
+      <%=link_to 'uninvite',  orders_new_path(:invite_id => usereman[0].id), method: :get, data: { confirm: "Are you sure?" } %>
 
-
-
-      <%= label_tag 'invit your friend'  %>
-       
+      <br/>
+      <% end %>
+      
+      <li>
+      </li>
+      </div>
+      
     <br></br>
      <%= submit_tag "add new order", :class => "btn btn-primary", :id => "add" %>
     
     </div>
-      
- 
-    
     </div>
   <% end %>
-  <div style="border:1px solid ;width:35%" >
-  <%= link_to "invite friend",method: :get %>
-  <% @orders.each  do |order| %>
-    <p> <%= order.order_type %> <%= order.restaurant_name %></p>
-   
-    <div style="border:1px solid ;width:35%" >
-      
-    <% @users.each  do |usereman| %>
-      <% @friend.each  do |userfriend| %>
-     
-     
-      
-           <% if userfriend.friend_id ==  usereman.id  %>
-           <li>
-           
-           <%= usereman.username %>
-           <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id,:order_id => order.id ),method: :get %>
-           
-           
-           <% end %>    
-           
-  
-      </li>
-     
-       <% end %>
-       
-       <% end %>
-  
-  
-    </div>
-         
-    <% end %>
   </div>
- 
-
-  <div style="border:1px solid ;width:35%" >
-      
-  <% @users.each  do |usereman| %>
-    <% @friend.each  do |userfriend| %>
-   
-   
-    
-         <% if userfriend.friend_id ==  usereman.id  %>
-         <li>
-         
-         <%= usereman.username %>
-         <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id ),method: :get %>
-         
-         
-         <% end %>    
-         
-
-    </li>
-   
-     <% end %>
-     
-     <% end %>
-
-
-  </div>
-  
- 
-  <br></br>
-  <%= label_tag 'friends that you invited '%>
-  <div style="border:1px solid ;width:35%">
-
- 
-  <% @invitedfriends.each  do |usereman| %>
-  
-  <%= usereman[0].username %>
-
-
-  <%=link_to 'uninvite',  orders_new_path(:invite_id => usereman[0].id), method: :get, data: { confirm: "Are you sure?" } %>
-
-  <br/>
-  <% end %>
-  
-  <li>
- 
+  </body>
+  </html> 
 
   
   

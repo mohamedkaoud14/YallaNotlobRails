@@ -8,7 +8,7 @@
     <style>
     body {
             font-family: system-ui;
-            background: #f06d06;
+            background: #dd7f36;
 
             color: white;
             text-align: center;
@@ -90,14 +90,14 @@
 </head>
 <body>
 
-
+          <br/><br/>
             <h1 class="my-header">👋  Hello </h1>
 
             <% if current_user  %>
             <%= image_tag(current_user.avatar_thumbnail)  %>
 
             
-            <br>
+            <br/><br/>
 
             <p  class="button">
             <%= link_to "edit account" ,edit_user_registration_path  %>
@@ -140,12 +140,7 @@
 	</li>
 
 <%end%>
-</div>
-
-
-
-
-    
+</div>  
 </body>
 </html>
 

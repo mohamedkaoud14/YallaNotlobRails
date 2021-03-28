@@ -1,37 +1,33 @@
-// Place all the styles related to the Groupusers controller here.
+// Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap";
 
+#order{
+    padding: 2%;
+    margin: 2%;
+        // text-align: center;
 
-// body{
-//     overflow: hidden;
-//     background-image: url(/assets/img.jpg);
-//     background-repeat: no-repeat;
-//     background-size: cover;
+}
+#group_name{
+    overflow: visible;
+    width: 35%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+}
+
+// #order_type{
+//     width: 35%;
 // }
 
-// .group_field{
-//     width: 50%;
-//     margin: 50px;
-//     display: inline-block;
-// }
+#add{
+    width: 35%;
 
-// .submit{
-//     text-align: center;
-//     display: inline-block;
-//     width: 40%;
-// }
+}
 
-// .button{
-//     background-color: #938581;
-//     width: 30%;
-// }
+// #orderform{
+//     // text-align: center;
 
-// input{
-//     width: 122%;
-// }
-
-// #list{
-//     margin: 0 auto;
 // }
