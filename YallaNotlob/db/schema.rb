@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_03_26_214240) do
 
-  create_table "active_storage_attachments", charset: "latin1", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "latin1", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "latin1", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "friends", charset: "latin1", force: :cascade do |t|
+  create_table "friends", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "friend_id"
     t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["users_id"], name: "index_friends_on_users_id"
   end
 
-  create_table "friendships", charset: "latin1", force: :cascade do |t|
+  create_table "friendships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "friend_id", null: false
     t.boolean "user_invitation"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
-  create_table "group_users", charset: "latin1", force: :cascade do |t|
+  create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "groupusers_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
-  create_table "groupusers", charset: "latin1", force: :cascade do |t|
+  create_table "groupusers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "group_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", charset: "latin1", force: :cascade do |t|
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "order_type"
     t.string "restaurant_name"
     t.string "img"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "sessions", charset: "latin1", force: :cascade do |t|
+  create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
     t.datetime "created_at", precision: 6, null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "user_invitations", charset: "latin1", force: :cascade do |t|
+  create_table "user_invitations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_214240) do
     t.index ["user_id"], name: "index_user_invitations_on_user_id"
   end
 
-  create_table "users", charset: "latin1", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
