@@ -57,15 +57,6 @@ ActiveRecord::Schema.define(version: 2021_03_27_233042) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
-  create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "groupusers_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["groupusers_id"], name: "index_group_users_on_groupusers_id"
-    t.index ["user_id"], name: "index_group_users_on_user_id"
-  end
-
   create_table "groupsuserrelas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "groupuser_id", null: false
@@ -129,8 +120,6 @@ ActiveRecord::Schema.define(version: 2021_03_27_233042) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "friends", "users", column: "users_id"
   add_foreign_key "friendships", "users"
-  add_foreign_key "group_users", "groupusers", column: "groupusers_id"
-  add_foreign_key "group_users", "users"
   add_foreign_key "groupsuserrelas", "groupusers"
   add_foreign_key "groupsuserrelas", "users"
   add_foreign_key "orders", "users"
