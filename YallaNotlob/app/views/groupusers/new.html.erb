@@ -1,12 +1,17 @@
 
-<%= form_tag("/groupusers/create",remote: true , method:"get") do  %>
-    <div>
+<%= stylesheet_link_tag 'groupusers', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
+
+<%= form_tag("/groupusers/create",remote: true ,method:"get") do  %>
+  <div class="add-new">
+    <div class="group_field">
       
       <%= text_field_tag(:group_name) %> 
 
     </div>
-    <div>
-     <%= submit_tag "add new group", :class => "btn btn-primary", :id => "add" %>
+    <div class="submit">
+     <%= submit_tag "add new group", :class => "button", :id => "add" %>
     
     </div>
  
@@ -51,6 +56,7 @@
     </li>
   <% end %>
 </ul>
+</div>
  
 <div  style="border:1px solid ;width:35%" id="list">
 
