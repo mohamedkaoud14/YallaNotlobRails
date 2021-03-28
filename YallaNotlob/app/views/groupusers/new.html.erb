@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 <html>
 <head>
     <title>forget password</title>
@@ -17,12 +16,6 @@
   </head>
 <body>
 <div id="order">
-=======
-<%= stylesheet_link_tag 'groupusers', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-
-
->>>>>>> 63e12e7c79a07e33e358427059e5566e0e7102e6
 <%= form_tag("/groupusers/create", method:"get") do  %>
   <div class="add-new">
     <div class="group_field">
@@ -30,13 +23,8 @@
       <%= text_field_tag(:group_name) %> 
 
     </div>
-<<<<<<< HEAD
     <div>
      <%= submit_tag "add New Group", :class => "btn btn-primary", :id => "add" %>
-=======
-    <div class="submit">
-     <%= submit_tag "add new group", :class => "button", :id => "add" %>
->>>>>>> 63e12e7c79a07e33e358427059e5566e0e7102e6
     
     </div>
     </div>
@@ -76,9 +64,6 @@
 
     <%= yield %> 
 
- 
-      
-      
     </li>
   <% end %>
 </ul>
