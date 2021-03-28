@@ -1,3 +1,22 @@
+<html>
+  <head>
+    <title>forget password</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "/stylesheets/application.scss"%>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>  
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+    
+
+    </style>
+  </head>
+  <body>
+
+
+
 <h2>Resend confirmation instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
@@ -14,3 +33,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</body>
+</html>
