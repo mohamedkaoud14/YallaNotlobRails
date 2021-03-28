@@ -34,6 +34,9 @@ Rails.application.routes.draw do
    post "/orders/show" , to: "orders#show"
    get "/orders/show" , to: "orders#show"
 
+   post "/orders/create" , to: "orders#create"
+   get "/orders/create" , to: "orders#create"
+
      post "/groupusers/create" , to: "groupusers#create"
    get "/groupusers/create" , to: "groupusers#create"  
       post '/users/auth/google_oauth2', to: "omniauth#google_oauth2"

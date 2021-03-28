@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def myaccount
     @friedsinvited=Friendship.where(user_invitation:1,friend_id:current_user.id)
+    @currentuserorder=Order.where(user_id:current_user.id)
 
     @invitations=[]
     @friedsinvited.each do |friendf| 
@@ -42,6 +43,7 @@ def destroy
  redirect_to root_path
 
 end
+
 
 end
 
