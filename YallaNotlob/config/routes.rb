@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#myaccount'
+  # devise_for :users
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
   get "/friends/search", to: "friends#search"
   resources :friends
@@ -13,6 +14,20 @@ Rails.application.routes.draw do
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
    post "/groupusers/new" , to: "groupusers#new"
    get "/groupusers/new" , to: "groupusers#new"
+
+
+   post "/pages/accept" , to: "pages#accept"
+   get "/pages/accept" , to: "pages#accept"
+
+   post "/pages/destroy" , to: "pages#destroy"
+   get "/pages/destroy" , to: "pages#destroy"
+   
+
+    post "/groupusers/add" , to: "groupusers#add"
+   get "/groupusers/add" , to: "groupusers#add"
+     delete "/groupusers/edit" , to: "groupusers#edit"
+        #  delete"/groupusers/edit/:delfriend_id" , to: "groupusers#edit"
+     post "/orders/new" , to: "groupusers#new"
      post "/orders/new" , to: "groupusers#new"
    get "/orders/new" , to: "groupusers#new"
 
@@ -21,8 +36,10 @@ Rails.application.routes.draw do
 
      post "/groupusers/create" , to: "groupusers#create"
    get "/groupusers/create" , to: "groupusers#create"  
-      post '/users/auth/google_oauth2', to: "groupusers#new"
-       get '/users/auth/google_oauth2', to: "groupusers#new"
+      post '/users/auth/google_oauth2', to: "omniauth#google_oauth2"
+       get '/users/auth/google_oauth2', to: "omniauth#google_oauth2"
+         post '/users/auth/facebook', to: "omniauth#facebook"
+       get '/users/auth/facebook', to: "omniauth#facebook"
 
 
        post "/orders/new/:friendd_id" , to: "orders#new"
