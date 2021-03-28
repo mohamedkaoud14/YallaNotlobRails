@@ -1,3 +1,33 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "bootstrap";
+
+#order{
+    padding: 2%;
+    margin: 2%;
+        // text-align: center;
+
+}
+#restaurant_name{
+    overflow: visible;
+    width: 35%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+}
+
+#order_type{
+    width: 35%;
+}
+
+#add{
+    width: 35%;
+   background-color: rgb(10, 136, 63);
+}
+
+#orderform{
+    // text-align: center;
+
+}

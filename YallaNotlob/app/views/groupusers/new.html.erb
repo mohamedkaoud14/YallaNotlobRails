@@ -1,3 +1,21 @@
+
+<html>
+<head>
+    <title>forget password</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "/stylesheets/groupusers.scss"%>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>  
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+    body{
+      background: #dd7f36;
+
+    }
+    </style>
+  </head>
+<body>
+<div id="order">
 <%= form_tag("/groupusers/create", method:"get") do  %>
     <div>
       
@@ -5,21 +23,21 @@
 
     </div>
     <div>
-     <%= submit_tag "add new group", :class => "btn btn-primary", :id => "add" %>
+     <%= submit_tag "add New Group", :class => "btn btn-primary", :id => "add" %>
     
     </div>
   <% end %>
  
  
   <ul style="border:1px solid ;width:35%" id="list">
-    <%= link_to "Addusers", groupusers_new_path(:user_id => current_user.id),method: :get%>
+    <%= link_to "AddUsers", groupusers_new_path(:user_id => current_user.id),method: :get%>
   
   <% @currentgroupusers.each  do |groupuser| %>
     <li>
         <%= groupuser[0].group_name%>
 
-         <%= link_to "Showusers", groupusers_new_path(:account_id => groupuser[0].id),method: :get%>
-  <%=link_to 'Deletegroup',  groupusers_path(:account_id => groupuser[0].id), method: :delete, data: { confirm: "Are you sure?" } %>
+         <%= link_to "ShowUsers", groupusers_new_path(:account_id => groupuser[0].id),method: :get%>
+  <%=link_to 'DeleteGroup',  groupusers_path(:account_id => groupuser[0].id), method: :delete, data: { confirm: "Are you sure?" } %>
            
 
              <div  style="border:1px solid ;width:75% ;margin-top:5%" id="list">
@@ -31,7 +49,7 @@
        
          <%= userfindff[0].username%>
          <% @flage %>
-    <%= link_to "Adduser", groupusers_new_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get%>
+    <%= link_to "AddUser", groupusers_new_path(:addfriend_id => userfindff[0].id,:groupid=>groupuser[0].id),method: :get%>
     
 
 
@@ -61,14 +79,16 @@
          <%= userfind[0].username %>
          <%= userfind[0].id %>
          <% @userfind=userfind[0].id%>
-          <%=link_to 'DElETuser',  groupusers_edit_path(:delfriend_id => userfind[0].id), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%=link_to 'DeleteUser',  groupusers_edit_path(:delfriend_id => userfind[0].id), method: :delete, data: { confirm: "Are you sure?" } %>
 
     </li>
      <% end %>
       
 </ul>
 </div>
-
+</div>
+</body>
+</html>
   
 
 
