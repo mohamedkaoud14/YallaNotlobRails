@@ -6,9 +6,13 @@ class OrdersController < ApplicationController
   def finish
     @a=Order.find(params[:id])
     @a.update(status: 'Finished')
+    
   end
 
-
+  def destroy
+   @deletedOrder=Order.find_by(id: params[:order_id])
+   @deletedOrder.destroy
+  end
   def new
     @order=Order.new
     @users=User.all

@@ -27,9 +27,9 @@
       </tr>
     </thead>
     <tbody>
-    <% @order.each do |order|  @invitedUsers=UserInvitation.where("order_id = " + order.id.to_s + "").count %>
+    <% @order.each do |order|  @invitedUsers=FriendshipInvitation.where("order_id = " + order.id.to_s + "").count %>
       
-      <%  @joinedUsers=UserInvitation.where("order_id = " + order.id.to_s + " and status='yes'").count %>
+      <%  @joinedUsers=FriendshipInvitation.where("order_id = " + order.id.to_s + " and joined=1").count %>
       <tr>
         <td><%= order.order_type %></td>
         <td><%= order.restaurant_name %></td>
@@ -42,8 +42,9 @@
         <td> 
        <%= button_to 'Finish', '/finish/'+order.id.to_s, method: :get,:class=>"btn btn-warning" ,:style=>'display-inline;' %></td>
     
-       <td> 
-       <%= button_to 'Cancel', '/finish/'+order.id.to_s, method: :get,:class=>"btn btn-danger" ,:style=>'display-inline;' %></td>
+       <td>
+       <%=link_to 'Cancel',  orders_path(:order_id => order.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+       </td>
        <% end %>
       </tr>
       <% end %> 

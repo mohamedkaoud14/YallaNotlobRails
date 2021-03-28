@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
     resource :groupusers
     resource :omniauth
-    #resource :orders
+    
 
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
    post "/groupusers/new" , to: "groupusers#new"
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
    get 'order_details/OrderDetails/:id', to: 'order_details#OrderDetails', as: 'button'
    post 'order_details/OrderDetails/:id' => "order_details#create"
    get 'order_details/create' =>"order_details#create"
+   delete "orders/delete/:order_id " => "orders#destroy"
 
    post "/orders/show" , to: "orders#show"
    get "/orders/show" , to: "orders#show"
@@ -58,7 +59,7 @@ Rails.application.routes.draw do
 
    
   
- 
+   resource :orders
  
   
 end
