@@ -5,3 +5,4 @@ YallaNotlob/Gemfile
 YallaNotlob/Gemfile.lock
 YallaNotlob/config/database.yml
 >>>>>>> c188b1cf426f6ad624d13499883a12a8e7cf62ff
+node_modules
