@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
     resource :groupusers
     resource :omniauth
-    resource :orders
+    # resource :orders
 
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
    post "/groupusers/new" , to: "groupusers#new"
@@ -37,7 +37,6 @@ Rails.application.routes.draw do
    get "/groupusers/add" , to: "groupusers#add"
      delete "/groupusers/edit" , to: "groupusers#edit"
         #  delete"/groupusers/edit/:delfriend_id" , to: "groupusers#edit"
-     post "/orders/new" , to: "groupusers#new"
      post "/orders/new" , to: "groupusers#new"
    get "/orders/new" , to: "groupusers#new"
 
