@@ -40,7 +40,7 @@
 
   input  {
     overflow: visible;
-    width: 169%;
+    // width: 169%;
     border: 1px solid #ccc;
     background: #FFF;
     margin: 0 0 5px;
@@ -65,4 +65,9 @@ h1{
     font-weight: 500;
     line-height: 0.2;
 
+}
+
+
+a{
+  color: white;
 }

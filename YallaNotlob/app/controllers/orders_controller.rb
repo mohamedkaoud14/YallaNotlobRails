@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     @friend =Friendship.where(user_id:current_user.id)
 
 
+
     # @arrorder=[]
     # @currentuserorder.each do |order| 
     #   @arrorder<<(User.where(id: order.friend_id).pluck(:username))
@@ -18,19 +19,22 @@ class OrdersController < ApplicationController
     
     @arr=[]
     @friend.each do |friendf| 
-      @arr<<(User.where(id: friendf.friend_id).pluck(:username))
+      @arr<<User.where(id: friendf.friend_id).pluck(:username)
     end
 
     @invitedfriend =User.where(id:params[:friendd_id]).pluck(:username)
-    @user_invite =FriendshipInvitation.where(friend_id:params[:friendd_id],order_id:[:order_id])
-    @user_invite.update(status:1)
+    # @user_invite =FriendshipInvitation.where(friend_id:params[:friendd_id],order_id:[:order_id])
+    # @user_invite.update(status:1)
+   
+    @inviteuserfriend=FriendshipInvitation.new(order_id:params[:order_id],user_id:current_user.id,friend_id:params[:friendd_id],status:1).save
+   
     @friedsinvited=FriendshipInvitation.where(status:1,user_id:current_user.id,order_id:params[:order_id])
 
     @invitedfriends=[]
     @friedsinvited.each do |friendf| 
       @invitedfriends<<User.where(id:friendf.friend_id)
 
-
+      
       ##################user_invitaions############
      
 
@@ -41,6 +45,10 @@ class OrdersController < ApplicationController
     @uninvtefriend=Friendship.where(friend_id:params[:invite_id])
     @uninvtefriend.update(user_invitation:0)
    
+    # @uninvtefriendships=FriendshipInvitation.where(status:1,user_id:current_user.id,order_id:params[:order_id])
+
+    # @uninvtefriendships=FriendshipInvitation.where(friend_id:params[:invite_id],order_id:params[:order_id])
+    # @uninvtefriendships.update(status:0)
 
 
   end

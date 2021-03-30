@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def myaccount
-    @friedsinvited=Friendship.where(user_invitation:1,friend_id:current_user.id)
+    @friedsinvited=FriendshipInvitation.where(status:1,friend_id:current_user.id)
     @currentuserorder=Order.where(user_id:current_user.id)
 
     @invitations=[]
@@ -28,18 +28,18 @@ end
 
 def accept
 
- @acceptinvitation=Friendship.where(user_invitation:1,friend_id:current_user.id,user_id:params[:accept_id])
+ @acceptinvitation=FriendshipInvitation.where(status:1,user_id:current_user.id,user_id:params[:accept_id],order_id:params[:order_id])
 
 
- @acceptinvitation.update(user_joined:1,user_invitation:0)
+ @acceptinvitation.update(joined:1,status:0)
  redirect_to root_path
 end
 
 def destroy
-  @acceptinvitation=Friendship.where(user_invitation:1,friend_id:current_user.id,user_id:params[:accept_id])
+  @acceptinvitation=FriendshipInvitation.where(status:1,friend_id:current_user.id,user_id:params[:accept_id],order_id:params[:order_id])
 
 
- @acceptinvitation.update(user_joined:0,user_invitation:0)
+ @acceptinvitation.update(joined:0,user_invitation:0)
  redirect_to root_path
 
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resource :groupusers
     resource :omniauth
    resource :orders
+  resource :pages
    delete "/groupusers/delete/:id" , to: "groupusers#destroy"
    post "/groupusers/new" , to: "groupusers#new"
    get "/groupusers/new" , to: "groupusers#new"
@@ -25,11 +26,11 @@ Rails.application.routes.draw do
    get "/groupusers/show" , to: "groupusers#show"
 
 
-   post "/pages/accept" , to: "pages#accept"
-   get "/pages/accept" , to: "pages#accept"
+   post "/pages/accept/:accept_id" , to: "pages#accept"
+   get "/pages/accept/:accept_id" , to: "pages#accept"
 
-   post "/pages/destroy" , to: "pages#destroy"
-   get "/pages/destroy" , to: "pages#destroy"
+   post "/pages/destroy/:accept_id" , to: "pages#destroy"
+   get "/pages/destroy/:accept_id" , to: "pages#destroy"
    
 
     post "/groupusers/add" , to: "groupusers#add"

@@ -26,37 +26,17 @@
     
     </div>
   <% end %>
+
   <div style="border:1px solid ;width:35%" >
-  <%= link_to "invite friend",method: :get %>
+  
+
+
   <% @orders.each  do |order| %>
-    <p> <%= order.order_type %> <%= order.restaurant_name %></p>
+    <% $orderid=order.id %>
+    <p style="display:inline-block"> <%= order.order_type %> <%= order.restaurant_name %></p>
    
-    <div style="border:1px solid ;width:35%" >
-      
-    <% @users.each  do |usereman| %>
-      <% @friend.each  do |userfriend| %>
-     
-     
-      
-           <% if userfriend.friend_id ==  usereman.id  %>
-           <li>
-           
-           <%= usereman.username %>
-           <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id,:order_id => order.id ),method: :get %>
-           
-           
-           <% end %>    
-           
-  
-      </li>
-     
-       <% end %>
-       
-       <% end %>
-  
-  
-    </div>
-         
+         <%= link_to "invite friend",method: :get %>
+<br/>
     <% end %>
   </div>
  
@@ -72,13 +52,14 @@
          <li>
          
          <%= usereman.username %>
-         <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id ),method: :get %>
+         <%= link_to "invite friend", orders_new_path( :friendd_id =>  userfriend.friend_id,:order_id => $orderid ),method: :get %>
          
          
          <% end %>    
          
 
     </li>
+    
    
      <% end %>
      
@@ -86,33 +67,27 @@
 
 
   </div>
+
+  <div style="border:1px solid ;width:35%" >
   
  
   <br></br>
+
+  
   <%= label_tag 'friends that you invited '%>
   <div style="border:1px solid ;width:35%">
 
  
   <% @invitedfriends.each  do |usereman| %>
   
-  <%= usereman[0].username %>
-
-
-  <%=link_to 'uninvite',  orders_new_path(:invite_id => usereman[0].id), method: :get, data: { confirm: "Are you sure?" } %>
-
-  <br/>
-  <% end %>
-  
-  <li>
- 
-
+    <%= usereman[0].username %>
   
   
-
-
- 
-  </li>
-
+    <%=link_to 'uninvite',  orders_new_path(:invite_id => usereman[0].id,:order_id => $orderid), method: :get, data: { confirm: "Are you sure?" } %>
+  
+    <br/>
+    <% end %>
+  
                   
      
   </div>

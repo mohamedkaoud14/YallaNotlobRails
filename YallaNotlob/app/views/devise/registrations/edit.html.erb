@@ -5,7 +5,7 @@
             body {
             font-family: system-ui;
             # background: #f06d06;
-           background: #777a68;
+           background: #1762c1;
 
 
             text-align: center;
@@ -36,13 +36,13 @@
         
           &:hover,
           &:focus {
-            color: #fff;
+            color: #99978d;
             outline: 0;
 
           }
 
    background: #868a17;
-  border-color: #868a17;
+  border-color: #e8e6df;
   color: #fff;
   # background: {
   #   image: linear-gradient(45deg, yellow 50%, transparent 50%);
@@ -57,8 +57,21 @@
 
   }
 }
+
+input{
+  overflow: visible;
+width: 26%;
+border: 1px solid #ccc;
+background: #FFF;
+margin: 0 0 5px;
+    margin-top: 0px;
+padding: 4px;
+
+}
 .btn-back:hover {
-    background-color: #2f3010;
+    background-color: #e8e6df;
+    color:black;
+    text-decoration: none;
     
 
   }
@@ -73,16 +86,20 @@
 
 
   }
-  .field{
 
-    border: 2px solid #0843c2;
-    text-align: center;
-    margin-left : 200px ;
-    margin-right : 200px ;
-    background-color: #8a9296;
-
-
+  .img{
+    margin-bottom: 25px;
   }
+  # .field{
+
+  #   border: 2px solid #0843c2;
+  #   text-align: center;
+  #   margin-left : 200px ;
+  #   margin-right : 200px ;
+  #   background-color: #8a9296;
+
+
+  # }
         
   
             </style>
@@ -97,6 +114,7 @@
 
 
     
+    <div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -104,18 +122,19 @@
 
  
   <tr>
-      <div class="field">
+      <div class="img">
         
         <%= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %>
       </div>
-      <div class="field">
+
+      <div >
         <%= f.file_field :avatar %><br />
       </div>
   </tr>
 
   <tr>
 
-  <div class="field">
+  <div >
     <%= f.label :email %><br/>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -125,7 +144,7 @@
   <% end %>
   </tr>
   <tr>
-  <div class="field">
+  <div >
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
@@ -136,13 +155,13 @@
     
   </tr>
   <tr>
-  <div class="field">
+  <div >
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   </tr>
   <tr>
-  <div class="field">
+  <div >
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
@@ -164,7 +183,7 @@
 
 <%= link_to "Back", :back ,  class: "btn-back" %>
 
-
+</div>
     </body>
 
 
